@@ -12,7 +12,7 @@ protocol FirstTabProtocol {
 }
 
 
-class FirstTabViewCooridnator : TabViewCoordinator , FirstTabProtocol {
+class MainPageViewCoordinator : TabViewCoordinator , FirstTabProtocol {
     
     var tabBarPage: TabBarPage
     
@@ -31,8 +31,8 @@ class FirstTabViewCooridnator : TabViewCoordinator , FirstTabProtocol {
     }
     
     func start() {
-        let view = FirstTabViewController()
-        let viewModel = FirstTapViewModel()
+        let view = MainPageViewController()
+        let viewModel = MainPageViewModel()
         viewModel.coordinator = self
         view.viewModel = viewModel
        
@@ -42,10 +42,23 @@ class FirstTabViewCooridnator : TabViewCoordinator , FirstTabProtocol {
     
     func simpleViewOpen(){
         
-        let coordinator = SimpleViewCoordinator()
+        let coordinator = DayScheduleViewCoordinator()
         coordinator.parentCoordinator = self
         coordinator.start()
         
     }
+    
+    func sideMenuOpen(){
+        let coordinator = SideMenuViewCoordinator()
+        coordinator.parentCoordinator = self
+        coordinator.start()
+        
+//        let view = LoginSideMenuController.instantiate()
+//        view.viewModel = LoginSideMenuViewModel(coordinator: self)
+//        //커스텀 네비게이션이랑 사이드메뉴 뷰컨트롤러 연결
+//        let menu = CustomSideMenuNavigation(rootViewController: view)
+//        self.router.sideMenuPresent(menu, isAnimated: true, onDismiss: nil)
+    }
+    
     
 }

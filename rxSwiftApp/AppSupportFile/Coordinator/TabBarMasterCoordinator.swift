@@ -56,7 +56,7 @@ class TabBarMasterCoordinator: NSObject, Coordinator , TabBarMasterProtocol {
         switch page {
         case .first:
             // If needed: Each tab bar flow can have it's own Coordinator.
-            let coordinator = FirstTabViewCooridnator(self , page)
+            let coordinator = MainPageViewCoordinator(self , page)
             childCoordinator.append(coordinator)
          
             coordinator.start()

@@ -19,9 +19,13 @@ PODS:
     - Differentiator (~> 5.0)
     - RxCocoa (~> 6.0)
     - RxSwift (~> 6.0)
+  - RxGesture (4.0.3):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - SideMenu (6.5.0)
   - SnapKit (5.0.1)
   - Then (2.7.0)
 
@@ -32,7 +36,9 @@ DEPENDENCIES:
   - Reusable
   - RxCocoa
   - RxDataSources
+  - RxGesture
   - RxSwift
+  - SideMenu
   - SnapKit
   - Then
 
@@ -45,8 +51,10 @@ SPEC REPOS:
     - Reusable
     - RxCocoa
     - RxDataSources
+    - RxGesture
     - RxRelay
     - RxSwift
+    - SideMenu
     - SnapKit
     - Then
 
@@ -58,11 +66,13 @@ SPEC CHECKSUMS:
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 7aad7dd385c34afa9d16dcff160822acc7be76de
+PODFILE CHECKSUM: e147b78cedcd66e79f653c0f59e97d8bcdf9c266
 
 COCOAPODS: 1.11.2

@@ -12,10 +12,9 @@
 		E03005762782C870002ADE0D /* SecondTabViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005752782C870002ADE0D /* SecondTabViewCoordinator.swift */; };
 		E03005782782C87D002ADE0D /* ThirdTabViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005772782C87D002ADE0D /* ThirdTabViewCoordinator.swift */; };
 		E030057A2782C8E8002ADE0D /* TabViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005792782C8E8002ADE0D /* TabViewCoordinator.swift */; };
-		E030057C2782D328002ADE0D /* SimpleViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030057B2782D328002ADE0D /* SimpleViewCoordinator.swift */; };
-		E030057E2782E496002ADE0D /* SimpleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030057D2782E496002ADE0D /* SimpleViewModel.swift */; };
+		E030057C2782D328002ADE0D /* DayScheduleViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030057B2782D328002ADE0D /* DayScheduleViewCoordinator.swift */; };
+		E030057E2782E496002ADE0D /* DayScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030057D2782E496002ADE0D /* DayScheduleViewModel.swift */; };
 		E03005802782E4EB002ADE0D /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030057F2782E4EB002ADE0D /* ViewModelProtocol.swift */; };
-		E03005822782E55A002ADE0D /* FirstTapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005812782E55A002ADE0D /* FirstTapViewModel.swift */; };
 		E03005862782E90B002ADE0D /* NetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005852782E90B002ADE0D /* NetworkingAPI.swift */; };
 		E030058B2783C55D002ADE0D /* ErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030058A2783C55D002ADE0D /* ErrorEnum.swift */; };
 		E030058E2783D1F3002ADE0D /* PoiSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030058D2783D1F3002ADE0D /* PoiSearchResponse.swift */; };
@@ -26,7 +25,6 @@
 		E030059C278406A0002ADE0D /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030059B278406A0002ADE0D /* CustomError.swift */; };
 		E030059D278406D5002ADE0D /* API_URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030059927840663002ADE0D /* API_URL.swift */; };
 		E030059E27840706002ADE0D /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030059B278406A0002ADE0D /* CustomError.swift */; };
-		E03005A127841041002ADE0D /* BeerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005A027841041002ADE0D /* BeerView.swift */; };
 		E03005A32784106E002ADE0D /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005A22784106E002ADE0D /* BeerModel.swift */; };
 		E0813A4B27816A2900130A5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A4A27816A2900130A5A /* AppDelegate.swift */; };
 		E0813A4D27816A2900130A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A4C27816A2900130A5A /* SceneDelegate.swift */; };
@@ -45,11 +43,9 @@
 		E0813A912781925D00130A5A /* TabBarMasterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A902781925D00130A5A /* TabBarMasterProtocol.swift */; };
 		E0813A932781938900130A5A /* TabBarEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A922781938900130A5A /* TabBarEnum.swift */; };
 		E0813A9527819B2100130A5A /* CoordinatorFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A9427819B2100130A5A /* CoordinatorFinishDelegate.swift */; };
-		E0813A972781A53D00130A5A /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A962781A53D00130A5A /* SimpleViewController.swift */; };
+		E0813A972781A53D00130A5A /* DayScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A962781A53D00130A5A /* DayScheduleViewController.swift */; };
 		E0813A9C2781A5B200130A5A /* SecondTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A9B2781A5B200130A5A /* SecondTabViewController.swift */; };
-		E0813A9E2781A5BC00130A5A /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A9D2781A5BC00130A5A /* FirstTabViewController.swift */; };
 		E0813AA02781A5CD00130A5A /* ThirdTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A9F2781A5CD00130A5A /* ThirdTabViewController.swift */; };
-		E0813AA52781AC6500130A5A /* FirstTabViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813AA42781AC6500130A5A /* FirstTabViewCoordinator.swift */; };
 		E092CA7A27AA563D008FB481 /* SUIT-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6B27AA563D008FB481 /* SUIT-Thin.otf */; };
 		E092CA7B27AA563D008FB481 /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6C27AA563D008FB481 /* SUIT-Regular.otf */; };
 		E092CA7C27AA563D008FB481 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6D27AA563D008FB481 /* NotoSansKR-Light.otf */; };
@@ -68,8 +64,25 @@
 		E092CA8B27AA567F008FB481 /* Font_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA8A27AA567F008FB481 /* Font_Extension.swift */; };
 		E092CA8D27AB9698008FB481 /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA8C27AB9698008FB481 /* CalendarViewCell.swift */; };
 		E092CA9127B1229A008FB481 /* StickyHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */; };
+		E095D0BA27B342D2000FE856 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0B727B342D2000FE856 /* MainPageViewController.swift */; };
+		E095D0BB27B342D2000FE856 /* MainPageViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0B827B342D2000FE856 /* MainPageViewCoordinator.swift */; };
+		E095D0BC27B342D2000FE856 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0B927B342D2000FE856 /* MainPageViewModel.swift */; };
+		E095D0BE27B34A71000FE856 /* ViewSettingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0BD27B34A71000FE856 /* ViewSettingProtocol.swift */; };
+		E095D0C027B352B4000FE856 /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0BF27B352B4000FE856 /* UIViewController_Extension.swift */; };
+		E095D0C327B35A35000FE856 /* DayScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0C227B35A35000FE856 /* DayScheduleCollectionViewCell.swift */; };
+		E095D0C627B37864000FE856 /* IconSize_Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0C527B37864000FE856 /* IconSize_Enum.swift */; };
+		E095D0C927B37AEF000FE856 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0C827B37AEF000FE856 /* SideMenuViewController.swift */; };
+		E095D0CB27B37AFD000FE856 /* SideMenuViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0CA27B37AFD000FE856 /* SideMenuViewCoordinator.swift */; };
+		E095D0CD27B37B0F000FE856 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0CC27B37B0F000FE856 /* SideMenuViewModel.swift */; };
+		E095D0CF27B3812E000FE856 /* ImageTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0CE27B3812E000FE856 /* ImageTitleButton.swift */; };
+		E095D0D127B38160000FE856 /* Spacing_Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D027B38160000FE856 /* Spacing_Enum.swift */; };
+		E095D0D327B3819C000FE856 /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D227B3819C000FE856 /* UIView_Extension.swift */; };
+		E095D0D627B3BCDB000FE856 /* TutoringCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D527B3BCDB000FE856 /* TutoringCreateViewController.swift */; };
+		E095D0D827B3BCE8000FE856 /* TutoringCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D727B3BCE8000FE856 /* TutoringCreateViewModel.swift */; };
+		E095D0DA27B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D927B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift */; };
+		E095D0DC27B3BE31000FE856 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0DB27B3BE31000FE856 /* TitleLabel.swift */; };
+		E095D0DE27B48335000FE856 /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0DD27B48335000FE856 /* DoneTextField.swift */; };
 		E0B5424127B228C900EF4BAF /* DayScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5424027B228C900EF4BAF /* DayScheduleViewCell.swift */; };
-		E0D385B1279FBCD60035A1CD /* BasePaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B0279FBCD60035A1CD /* BasePaddingLabel.swift */; };
 		E0D385B3279FBE6C0035A1CD /* baseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B2279FBE6C0035A1CD /* baseColor.swift */; };
 		E0D385B5279FC33C0035A1CD /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B4279FC33C0035A1CD /* BannerCollectionViewCell.swift */; };
 		E0D385B9279FC5BC0035A1CD /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B8279FC5BC0035A1CD /* BannerModel.swift */; };
@@ -104,10 +117,9 @@
 		E03005752782C870002ADE0D /* SecondTabViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewCoordinator.swift; sourceTree = "<group>"; };
 		E03005772782C87D002ADE0D /* ThirdTabViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabViewCoordinator.swift; sourceTree = "<group>"; };
 		E03005792782C8E8002ADE0D /* TabViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewCoordinator.swift; sourceTree = "<group>"; };
-		E030057B2782D328002ADE0D /* SimpleViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewCoordinator.swift; sourceTree = "<group>"; };
-		E030057D2782E496002ADE0D /* SimpleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewModel.swift; sourceTree = "<group>"; };
+		E030057B2782D328002ADE0D /* DayScheduleViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleViewCoordinator.swift; sourceTree = "<group>"; };
+		E030057D2782E496002ADE0D /* DayScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleViewModel.swift; sourceTree = "<group>"; };
 		E030057F2782E4EB002ADE0D /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
-		E03005812782E55A002ADE0D /* FirstTapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTapViewModel.swift; sourceTree = "<group>"; };
 		E03005852782E90B002ADE0D /* NetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingAPI.swift; sourceTree = "<group>"; };
 		E030058A2783C55D002ADE0D /* ErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorEnum.swift; sourceTree = "<group>"; };
 		E030058D2783D1F3002ADE0D /* PoiSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoiSearchResponse.swift; sourceTree = "<group>"; };
@@ -116,7 +128,6 @@
 		E03005962784054C002ADE0D /* ServiceArea.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ServiceArea.json; sourceTree = "<group>"; };
 		E030059927840663002ADE0D /* API_URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_URL.swift; sourceTree = "<group>"; };
 		E030059B278406A0002ADE0D /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
-		E03005A027841041002ADE0D /* BeerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerView.swift; sourceTree = "<group>"; };
 		E03005A22784106E002ADE0D /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
 		E0813A4727816A2900130A5A /* rxSwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0813A4A27816A2900130A5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,11 +150,9 @@
 		E0813A902781925D00130A5A /* TabBarMasterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMasterProtocol.swift; sourceTree = "<group>"; };
 		E0813A922781938900130A5A /* TabBarEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarEnum.swift; sourceTree = "<group>"; };
 		E0813A9427819B2100130A5A /* CoordinatorFinishDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishDelegate.swift; sourceTree = "<group>"; };
-		E0813A962781A53D00130A5A /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
+		E0813A962781A53D00130A5A /* DayScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleViewController.swift; sourceTree = "<group>"; };
 		E0813A9B2781A5B200130A5A /* SecondTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabViewController.swift; sourceTree = "<group>"; };
-		E0813A9D2781A5BC00130A5A /* FirstTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
 		E0813A9F2781A5CD00130A5A /* ThirdTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabViewController.swift; sourceTree = "<group>"; };
-		E0813AA42781AC6500130A5A /* FirstTabViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTabViewCoordinator.swift; sourceTree = "<group>"; };
 		E092CA6B27AA563D008FB481 /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
 		E092CA6C27AA563D008FB481 /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
 		E092CA6D27AA563D008FB481 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -162,8 +171,25 @@
 		E092CA8A27AA567F008FB481 /* Font_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font_Extension.swift; sourceTree = "<group>"; };
 		E092CA8C27AB9698008FB481 /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
 		E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderViewController.swift; sourceTree = "<group>"; };
+		E095D0B727B342D2000FE856 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
+		E095D0B827B342D2000FE856 /* MainPageViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewCoordinator.swift; sourceTree = "<group>"; };
+		E095D0B927B342D2000FE856 /* MainPageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		E095D0BD27B34A71000FE856 /* ViewSettingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSettingProtocol.swift; sourceTree = "<group>"; };
+		E095D0BF27B352B4000FE856 /* UIViewController_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
+		E095D0C227B35A35000FE856 /* DayScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
+		E095D0C527B37864000FE856 /* IconSize_Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSize_Enum.swift; sourceTree = "<group>"; };
+		E095D0C827B37AEF000FE856 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		E095D0CA27B37AFD000FE856 /* SideMenuViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewCoordinator.swift; sourceTree = "<group>"; };
+		E095D0CC27B37B0F000FE856 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
+		E095D0CE27B3812E000FE856 /* ImageTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleButton.swift; sourceTree = "<group>"; };
+		E095D0D027B38160000FE856 /* Spacing_Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing_Enum.swift; sourceTree = "<group>"; };
+		E095D0D227B3819C000FE856 /* UIView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
+		E095D0D527B3BCDB000FE856 /* TutoringCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringCreateViewController.swift; sourceTree = "<group>"; };
+		E095D0D727B3BCE8000FE856 /* TutoringCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringCreateViewModel.swift; sourceTree = "<group>"; };
+		E095D0D927B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringCreateViewCoordinator.swift; sourceTree = "<group>"; };
+		E095D0DB27B3BE31000FE856 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
+		E095D0DD27B48335000FE856 /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
 		E0B5424027B228C900EF4BAF /* DayScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleViewCell.swift; sourceTree = "<group>"; };
-		E0D385B0279FBCD60035A1CD /* BasePaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePaddingLabel.swift; sourceTree = "<group>"; };
 		E0D385B2279FBE6C0035A1CD /* baseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baseColor.swift; sourceTree = "<group>"; };
 		E0D385B4279FC33C0035A1CD /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		E0D385B8279FC5BC0035A1CD /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
@@ -216,6 +242,7 @@
 		E03005832782E8EA002ADE0D /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				E095D0BD27B34A71000FE856 /* ViewSettingProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -260,14 +287,15 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
-		E030059F27841034002ADE0D /* SubViews */ = {
+		E030059F27841034002ADE0D /* ComponentsViews */ = {
 			isa = PBXGroup;
 			children = (
-				E03005A027841041002ADE0D /* BeerView.swift */,
-				E0D385B0279FBCD60035A1CD /* BasePaddingLabel.swift */,
 				E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */,
+				E095D0CE27B3812E000FE856 /* ImageTitleButton.swift */,
+				E095D0DB27B3BE31000FE856 /* TitleLabel.swift */,
+				E095D0DD27B48335000FE856 /* DoneTextField.swift */,
 			);
-			path = SubViews;
+			path = ComponentsViews;
 			sourceTree = "<group>";
 		};
 		E0813A3E27816A2900130A5A = {
@@ -295,8 +323,9 @@
 		E0813A4927816A2900130A5A /* rxSwiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				E095D0C427B37858000FE856 /* Enum */,
 				E092CA8927AA566E008FB481 /* Extension */,
-				E030059F27841034002ADE0D /* SubViews */,
+				E030059F27841034002ADE0D /* ComponentsViews */,
 				E030058C2783D1AA002ADE0D /* Model */,
 				E0813A982781A54200130A5A /* Views */,
 				E0813A7C27817D3300130A5A /* AppSupportFile */,
@@ -377,34 +406,36 @@
 		E0813A982781A54200130A5A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E095D0D427B3BCB4000FE856 /* TutoringCreate */,
 				E0813AA22781A5D700130A5A /* ThirdTap */,
 				E0813AA12781A5D000130A5A /* SecondTap */,
-				E0813A9A2781A59000130A5A /* FirstTap */,
-				E0813A992781A55400130A5A /* Simple */,
+				E0813A9A2781A59000130A5A /* MainPage */,
+				E0813A992781A55400130A5A /* DaySchedule */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E0813A992781A55400130A5A /* Simple */ = {
+		E0813A992781A55400130A5A /* DaySchedule */ = {
 			isa = PBXGroup;
 			children = (
-				E0813A962781A53D00130A5A /* SimpleViewController.swift */,
-				E030057B2782D328002ADE0D /* SimpleViewCoordinator.swift */,
-				E030057D2782E496002ADE0D /* SimpleViewModel.swift */,
+				E095D0C127B35A11000FE856 /* Cell */,
+				E0813A962781A53D00130A5A /* DayScheduleViewController.swift */,
+				E030057B2782D328002ADE0D /* DayScheduleViewCoordinator.swift */,
+				E030057D2782E496002ADE0D /* DayScheduleViewModel.swift */,
 			);
-			path = Simple;
+			path = DaySchedule;
 			sourceTree = "<group>";
 		};
-		E0813A9A2781A59000130A5A /* FirstTap */ = {
+		E0813A9A2781A59000130A5A /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
-				E0D385B7279FC5AD0035A1CD /* Model */,
 				E0D385B6279FC3550035A1CD /* Cell */,
-				E0813A9D2781A5BC00130A5A /* FirstTabViewController.swift */,
-				E0813AA42781AC6500130A5A /* FirstTabViewCoordinator.swift */,
-				E03005812782E55A002ADE0D /* FirstTapViewModel.swift */,
+				E095D0C727B37AA8000FE856 /* SubView */,
+				E095D0B727B342D2000FE856 /* MainPageViewController.swift */,
+				E095D0B827B342D2000FE856 /* MainPageViewCoordinator.swift */,
+				E095D0B927B342D2000FE856 /* MainPageViewModel.swift */,
 			);
-			path = FirstTap;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		E0813AA12781A5D000130A5A /* SecondTap */ = {
@@ -461,8 +492,47 @@
 			isa = PBXGroup;
 			children = (
 				E092CA8A27AA567F008FB481 /* Font_Extension.swift */,
+				E095D0BF27B352B4000FE856 /* UIViewController_Extension.swift */,
+				E095D0D227B3819C000FE856 /* UIView_Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E095D0C127B35A11000FE856 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E095D0C227B35A35000FE856 /* DayScheduleCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E095D0C427B37858000FE856 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				E095D0C527B37864000FE856 /* IconSize_Enum.swift */,
+				E095D0D027B38160000FE856 /* Spacing_Enum.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		E095D0C727B37AA8000FE856 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				E095D0C827B37AEF000FE856 /* SideMenuViewController.swift */,
+				E095D0CA27B37AFD000FE856 /* SideMenuViewCoordinator.swift */,
+				E095D0CC27B37B0F000FE856 /* SideMenuViewModel.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		E095D0D427B3BCB4000FE856 /* TutoringCreate */ = {
+			isa = PBXGroup;
+			children = (
+				E095D0D527B3BCDB000FE856 /* TutoringCreateViewController.swift */,
+				E095D0D927B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift */,
+				E095D0D727B3BCE8000FE856 /* TutoringCreateViewModel.swift */,
+			);
+			path = TutoringCreate;
 			sourceTree = "<group>";
 		};
 		E0D385B6279FC3550035A1CD /* Cell */ = {
@@ -473,13 +543,6 @@
 				E0B5424027B228C900EF4BAF /* DayScheduleViewCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		E0D385B7279FC5AD0035A1CD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		E0DE234A2797E40300790EE7 /* Cell */ = {
@@ -731,49 +794,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E03005A127841041002ADE0D /* BeerView.swift in Sources */,
 				E0813A88278183E400130A5A /* Router.swift in Sources */,
 				E0813A8B2781866B00130A5A /* AppMainCoordinator.swift in Sources */,
-				E0813AA52781AC6500130A5A /* FirstTabViewCoordinator.swift in Sources */,
 				E0D385B5279FC33C0035A1CD /* BannerCollectionViewCell.swift in Sources */,
 				E0DE23492797DB7500790EE7 /* Meal.swift in Sources */,
-				E03005822782E55A002ADE0D /* FirstTapViewModel.swift in Sources */,
+				E095D0C327B35A35000FE856 /* DayScheduleCollectionViewCell.swift in Sources */,
+				E095D0C627B37864000FE856 /* IconSize_Enum.swift in Sources */,
 				E0813A7E27817E7900130A5A /* Coordinator.swift in Sources */,
 				E030059C278406A0002ADE0D /* CustomError.swift in Sources */,
 				E03005802782E4EB002ADE0D /* ViewModelProtocol.swift in Sources */,
 				E092CA8D27AB9698008FB481 /* CalendarViewCell.swift in Sources */,
 				E030057A2782C8E8002ADE0D /* TabViewCoordinator.swift in Sources */,
 				E0813A9527819B2100130A5A /* CoordinatorFinishDelegate.swift in Sources */,
-				E0813A972781A53D00130A5A /* SimpleViewController.swift in Sources */,
-				E030057C2782D328002ADE0D /* SimpleViewCoordinator.swift in Sources */,
+				E095D0BB27B342D2000FE856 /* MainPageViewCoordinator.swift in Sources */,
+				E0813A972781A53D00130A5A /* DayScheduleViewController.swift in Sources */,
+				E030057C2782D328002ADE0D /* DayScheduleViewCoordinator.swift in Sources */,
 				E0813A83278182BD00130A5A /* Routing.swift in Sources */,
-				E030057E2782E496002ADE0D /* SimpleViewModel.swift in Sources */,
+				E030057E2782E496002ADE0D /* DayScheduleViewModel.swift in Sources */,
+				E095D0BC27B342D2000FE856 /* MainPageViewModel.swift in Sources */,
+				E095D0D627B3BCDB000FE856 /* TutoringCreateViewController.swift in Sources */,
 				E092CA8B27AA567F008FB481 /* Font_Extension.swift in Sources */,
+				E095D0DA27B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift in Sources */,
+				E095D0DE27B48335000FE856 /* DoneTextField.swift in Sources */,
 				E03005762782C870002ADE0D /* SecondTabViewCoordinator.swift in Sources */,
 				E0813A852781833700130A5A /* Drawable.swift in Sources */,
 				E0813A9C2781A5B200130A5A /* SecondTabViewController.swift in Sources */,
 				E0813A8F27818D8500130A5A /* TabBarMasterCoordinator.swift in Sources */,
 				E0813A932781938900130A5A /* TabBarEnum.swift in Sources */,
 				E0813A8D2781869300130A5A /* AppMainCoordinatorProtocol.swift in Sources */,
+				E095D0D327B3819C000FE856 /* UIView_Extension.swift in Sources */,
+				E095D0BA27B342D2000FE856 /* MainPageViewController.swift in Sources */,
+				E095D0BE27B34A71000FE856 /* ViewSettingProtocol.swift in Sources */,
 				E0813AA02781A5CD00130A5A /* ThirdTabViewController.swift in Sources */,
 				E0D385B3279FBE6C0035A1CD /* baseColor.swift in Sources */,
 				E092CA9127B1229A008FB481 /* StickyHeaderViewController.swift in Sources */,
+				E095D0D127B38160000FE856 /* Spacing_Enum.swift in Sources */,
+				E095D0CD27B37B0F000FE856 /* SideMenuViewModel.swift in Sources */,
 				E03005782782C87D002ADE0D /* ThirdTabViewCoordinator.swift in Sources */,
 				E0B5424127B228C900EF4BAF /* DayScheduleViewCell.swift in Sources */,
-				E0D385B1279FBCD60035A1CD /* BasePaddingLabel.swift in Sources */,
 				E0D385BB279FD4570035A1CD /* ReqModel.swift in Sources */,
 				E03005932783D28C002ADE0D /* Pois.swift in Sources */,
 				E0813A912781925D00130A5A /* TabBarMasterProtocol.swift in Sources */,
 				E030058E2783D1F3002ADE0D /* PoiSearchResponse.swift in Sources */,
+				E095D0CB27B37AFD000FE856 /* SideMenuViewCoordinator.swift in Sources */,
 				E0DE234E2797F68800790EE7 /* DayCollectionViewCell.swift in Sources */,
 				E0D385B9279FC5BC0035A1CD /* BannerModel.swift in Sources */,
+				E095D0CF27B3812E000FE856 /* ImageTitleButton.swift in Sources */,
 				E0DE234C2797E44000790EE7 /* MealTableViewCell.swift in Sources */,
 				E03005A32784106E002ADE0D /* BeerModel.swift in Sources */,
+				E095D0D827B3BCE8000FE856 /* TutoringCreateViewModel.swift in Sources */,
+				E095D0C027B352B4000FE856 /* UIViewController_Extension.swift in Sources */,
 				E030059A27840663002ADE0D /* API_URL.swift in Sources */,
 				E0813A4B27816A2900130A5A /* AppDelegate.swift in Sources */,
 				E030058B2783C55D002ADE0D /* ErrorEnum.swift in Sources */,
+				E095D0C927B37AEF000FE856 /* SideMenuViewController.swift in Sources */,
+				E095D0DC27B3BE31000FE856 /* TitleLabel.swift in Sources */,
 				E03005862782E90B002ADE0D /* NetworkingAPI.swift in Sources */,
-				E0813A9E2781A5BC00130A5A /* FirstTabViewController.swift in Sources */,
 				E0813A4D27816A2900130A5A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

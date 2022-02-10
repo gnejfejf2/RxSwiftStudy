@@ -16,6 +16,7 @@ class DayCollectionViewCell: UICollectionViewCell {
    
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .primaryColor
+        label.textAlignment = .left
         return label
     }()
 
@@ -61,7 +62,8 @@ extension DayCollectionViewCell {
         
         titleLabel.snp.makeConstraints { make in
   
-            make.centerXWithinMargins.centerYWithinMargins.equalTo(contentView)
+            make.top.bottom.trailing.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
         }
     }
 }

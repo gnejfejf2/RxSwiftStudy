@@ -54,6 +54,16 @@ extension Router : Routing{
     }
     
     //sheet올리기
+    func sideMenuPresent(_ drawable: Drawable, isAnimated: Bool, onDismiss closure : FunctionCloure?) {
+        guard let viewController = drawable.viewController else { return }
+        
+        if let closure = closure {
+            closures.updateValue(closure, forKey: viewController.description)
+        }
+        navigationController.present(viewController, animated: isAnimated, completion: nil)
+    }
+    
+    //sheet올리기
     func present(_ drawable: Drawable, isAnimated: Bool, onDismiss closure : FunctionCloure?) {
         guard let viewController = drawable.viewController else { return }
         
@@ -66,6 +76,12 @@ extension Router : Routing{
         viewController.presentationController?.delegate = self
     }
 
+    //sheet올리기
+    func dismiss(isAnimated: Bool , onDismiss closure : FunctionCloure? = nil) {
+        navigationController.dismiss(animated: true, completion: closure)
+        
+    }
+    
 
     
     func execureClosures(_ viewController : UIViewController) -> Void{

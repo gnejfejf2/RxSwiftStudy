@@ -4,11 +4,13 @@
 target 'rxSwiftApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  #custom Menu
+  pod 'SideMenu'
   # Rx
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
+  pod 'RxGesture'
   
   # Networking
   pod 'Alamofire'
@@ -28,12 +30,13 @@ end
 target 'rxSwiftAppTests' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  #custom Menu
+  pod 'SideMenu'
   # Rx
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxDataSources'
-  
+  pod 'RxGesture'
   # Networking
   pod 'Alamofire'
   pod 'Moya/RxSwift'

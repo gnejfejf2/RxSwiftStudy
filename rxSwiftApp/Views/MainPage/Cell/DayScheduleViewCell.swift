@@ -43,7 +43,7 @@ class DayScheduleViewCell: UITableViewCell {
 extension DayScheduleViewCell {
     private func setupUI() {
         self.contentView.addSubview(titleLabel)
-        
+        self.backgroundColor = .primaryColorReverse
         titleLabel.snp.makeConstraints { make in
             make.centerXWithinMargins.centerYWithinMargins.equalTo(contentView)
         }

@@ -15,4 +15,5 @@ protocol Routing {
     func popToRoot(_ isAnimated : Bool)
     func presentPopUp(_ drawable: Drawable, isAnimated: Bool, onDismiss closure : FunctionCloure?)
     func present(_ drawable : Drawable , isAnimated : Bool , onDismiss : FunctionCloure?)
+    func dismiss(isAnimated: Bool , onDismiss closure : FunctionCloure?)
 }

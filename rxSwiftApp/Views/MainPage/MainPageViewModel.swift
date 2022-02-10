@@ -11,15 +11,16 @@ import RxDataSources
 import Then
 import UIKit
 
-class FirstTapViewModel : ViewModelProtocol {
+class MainPageViewModel : ViewModelProtocol {
     
     var network: NetworkingService = NetworkingAPI.shared
     
-    weak var coordinator : FirstTabViewCooridnator?
+    weak var coordinator : MainPageViewCoordinator?
 
     private let disposeBag = DisposeBag()
     
     struct Input {
+        let menuOpen = PublishRelay<Void>()
         let monthController = PublishSubject<Int>()
         let month = BehaviorRelay<DateComponents>(value: DateComponents())
     }
@@ -86,6 +87,12 @@ class FirstTapViewModel : ViewModelProtocol {
 
         input.month.accept(components)
         
+        
+        input.menuOpen
+            .subscribe { [weak self] _ in
+                self?.coordinator?.sideMenuOpen()
+            }.disposed(by: disposeBag)
+
         
       
     }

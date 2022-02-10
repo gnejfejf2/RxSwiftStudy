@@ -61,6 +61,11 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
         }
     }
     
+    var topSafeAreaCover = UIView().then{
+        $0.backgroundColor = .red
+        
+    }
+    
    
     let data = Observable<[MealCategory]>.just(MealManager.shared.categories)
     
@@ -99,6 +104,7 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
         view.backgroundColor = .white
         
         view.addSubview(mainScrollView)
+        view.addSubview(topSafeAreaCover)
         
         mainScrollView.snp.makeConstraints { make in
         
@@ -134,25 +140,31 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
         mealsTableView.snp.makeConstraints { make in
             make.top.equalTo(categoryCollectionView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-           
             make.bottom.equalTo(stackView.snp.bottom) // 이것이 중요함
         }
+        
+        topSafeAreaCover.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
+        
     }
     
     private func setupViews() {
-       
         categoryCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
         mealsTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
+       
 
     }
     
     
     
     
-    func dataSetting(){
+    private func dataSetting(){
         sectionSubject.accept(MealManager.shared.categories)
         dataSource.titleForHeaderInSection = { dataSource, index in
             return dataSource.sectionModels[index].name
@@ -162,7 +174,7 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
     }
     
     
-    func bind(){
+    private func bind(){
      
         sectionSubject
             .bind(to: categoryCollectionView.rx.items(cellIdentifier: DayCollectionViewCell.identifier, cellType: DayCollectionViewCell.self)) {
@@ -170,10 +182,14 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
                 cell.bind(mySectionItem : element.name)
               }.disposed(by: disposeBag)
         
-     
         sectionSubject
             .bind(to: mealsTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+       
+
+        
+        
         
     }
  
@@ -218,11 +234,7 @@ extension SecondTabViewController : UITableViewDelegate {
         if scrollView == mealsTableView{
             let topSection = mealsTableView.indexPathsForVisibleRows?.map{$0.section}.sorted().first ?? 0
             let indexPath = IndexPath(item: topSection, section: 0)
-        
-         
-            
-          
-            if(topIndex != topSection){
+         if(topIndex != topSection){
                 topIndex = topSection
                 categoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             }
