@@ -82,6 +82,7 @@
 		E095D0DA27B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0D927B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift */; };
 		E095D0DC27B3BE31000FE856 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0DB27B3BE31000FE856 /* TitleLabel.swift */; };
 		E095D0DE27B48335000FE856 /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0DD27B48335000FE856 /* DoneTextField.swift */; };
+		E095D0E427B4C613000FE856 /* DonePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0E327B4C613000FE856 /* DonePickerView.swift */; };
 		E0B5424127B228C900EF4BAF /* DayScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5424027B228C900EF4BAF /* DayScheduleViewCell.swift */; };
 		E0D385B3279FBE6C0035A1CD /* baseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B2279FBE6C0035A1CD /* baseColor.swift */; };
 		E0D385B5279FC33C0035A1CD /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B4279FC33C0035A1CD /* BannerCollectionViewCell.swift */; };
@@ -189,6 +190,7 @@
 		E095D0D927B3BCF4000FE856 /* TutoringCreateViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringCreateViewCoordinator.swift; sourceTree = "<group>"; };
 		E095D0DB27B3BE31000FE856 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		E095D0DD27B48335000FE856 /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
+		E095D0E327B4C613000FE856 /* DonePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonePickerView.swift; sourceTree = "<group>"; };
 		E0B5424027B228C900EF4BAF /* DayScheduleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayScheduleViewCell.swift; sourceTree = "<group>"; };
 		E0D385B2279FBE6C0035A1CD /* baseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baseColor.swift; sourceTree = "<group>"; };
 		E0D385B4279FC33C0035A1CD /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				E095D0CE27B3812E000FE856 /* ImageTitleButton.swift */,
 				E095D0DB27B3BE31000FE856 /* TitleLabel.swift */,
 				E095D0DD27B48335000FE856 /* DoneTextField.swift */,
+				E095D0E327B4C613000FE856 /* DonePickerView.swift */,
 			);
 			path = ComponentsViews;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				E0DE234E2797F68800790EE7 /* DayCollectionViewCell.swift in Sources */,
 				E0D385B9279FC5BC0035A1CD /* BannerModel.swift in Sources */,
 				E095D0CF27B3812E000FE856 /* ImageTitleButton.swift in Sources */,
+				E095D0E427B4C613000FE856 /* DonePickerView.swift in Sources */,
 				E0DE234C2797E44000790EE7 /* MealTableViewCell.swift in Sources */,
 				E03005A32784106E002ADE0D /* BeerModel.swift in Sources */,
 				E095D0D827B3BCE8000FE856 /* TutoringCreateViewModel.swift in Sources */,

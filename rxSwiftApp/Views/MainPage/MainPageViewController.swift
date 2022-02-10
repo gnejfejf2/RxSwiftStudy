@@ -8,7 +8,7 @@ import RxRelay
 
 protocol MainPageProtocol {
     func calendarSetting(_ days : [DaysModel])
-    func headerMove(_ index : IndexPath)
+    func headerMove(_ index : Int)
 }
 
 class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageProtocol{
@@ -109,6 +109,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         collectionView.indicatorStyle = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .primaryColorReverse
         collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
         
         return collectionView
@@ -320,8 +321,16 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         }
     }
     
-    func headerMove(_ index : IndexPath){
-        daysHeaderCollectionView.selectItem(at: index, animated: true, scrollPosition: .centeredHorizontally)
+    func headerMove(_ index : Int){
+        var getIndex : Int = index
+        
+        if(getIndex + 1 < viewModel?.output.daySchedules.value.count ?? 0){
+            getIndex += 1
+        }
+        
+        
+        
+        daysHeaderCollectionView.selectItem(at: IndexPath(item: getIndex, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
     
@@ -352,9 +361,9 @@ extension MainPageViewController : UIScrollViewDelegate {
             segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - daysHeaderCollectionView.frame.height - (topStackView.spacing * 2) - toDoTodayLabel.frame.height)), 0)
             topStackView.layer.transform = segmentTransform
             guard let topSection = scheduleCollectionView.indexPathsForVisibleRows?.first?[0] else { return }
-            if(topSection + 1 != viewModel?.output.daySchedules.value.count){
-                viewModel?.output.heeaderIndex.accept(IndexPath(item: topSection + 1, section: 0))
-            }
+          
+            viewModel?.output.heeaderIndex.accept(topSection)
+            
         }
     }
 }

@@ -31,14 +31,15 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         $0.distribution = .fill
         $0.spacing = 10
         $0.alignment = .center
-        $0.backgroundColor = .brown
+        
         $0.isLayoutMarginsRelativeArrangement = true
         
         $0.addArrangedSubview(tutoringTitleLabel)
         $0.addArrangedSubview(tutoringTextField)
-        $0.addArrangedSubview(studentTitleLabel)
-        $0.addArrangedSubview(studentTextField)
+        $0.addArrangedSubview(tuteeTitleLabel)
+        $0.addArrangedSubview(tuteeTextField)
         $0.addArrangedSubview(paymentMethodTitleLabel)
+        $0.addArrangedSubview(paymentMethodTextField)
         $0.addArrangedSubview(startDateTitleLabel)
         $0.addArrangedSubview(studentRemarksTitleLabel)
         $0.addArrangedSubview(studentRemarksTextView)
@@ -53,17 +54,22 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         $0.textAlignment = .left
     }
     
-    var studentTitleLabel = TitleLabel().then{
+    var tuteeTitleLabel = TitleLabel().then{
         $0.text = "수강생"
         $0.textAlignment = .left
     }
     
-    var studentTextField = DoneTextField().then{
+    var tuteeTextField = DoneTextField().then{
         $0.placeholder = "수강생을 적어주세요"
         $0.textAlignment = .left
     }
     
     var paymentMethodTitleLabel = TitleLabel().then{
+        $0.text = "비용관리"
+        $0.textAlignment = .left
+    }
+    
+    var paymentMethodTextField = DonePickerView().then{
         $0.text = "비용관리"
         $0.textAlignment = .left
     }
@@ -76,18 +82,30 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         $0.text = "수강생 특징"
         $0.textAlignment = .left
     }
+    
     var studentRemarksTextView = UITextView().then{
         $0.text = "수강생을 적어주세요"
         $0.textColor = .primaryColor
         $0.textAlignment = .left
     }
     
-    lazy var titles : [UIView] = [tutoringTitleLabel,studentTitleLabel,paymentMethodTitleLabel,startDateTitleLabel,studentRemarksTitleLabel]
-    lazy var contents : [UIView] = [tutoringTextField,studentTextField,studentRemarksTextView]
+    
+    
+    
+    
+    
+    let pickerData = [paymentTypeModel(name: "무료", typeValue: 0),paymentTypeModel(name: "월결제", typeValue: 1),paymentTypeModel(name: "횟수차감", typeValue: 2)]
+    var pickerIndex : Int = 0
+    
+    
+    lazy var titles : [UIView] = [tutoringTitleLabel,tuteeTitleLabel,paymentMethodTitleLabel,startDateTitleLabel,studentRemarksTitleLabel]
+    lazy var contents : [UIView] = [tutoringTextField,tuteeTextField,paymentMethodTextField,studentRemarksTextView]
+    
     
     lazy var bottomConstraint = mainStackView.bottomAnchor.constraint(equalTo: self.mainScrollView.bottomAnchor)
     
     private let disposeBag = DisposeBag()
+    
     
     var viewModel : TutoringCreateViewModel?
     
@@ -127,7 +145,7 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         }
         bottomConstraint.isActive = true
         
-      
+        
         titles.forEach{
             $0.snp.makeConstraints { make in
                 make.trailing.equalToSuperview().offset(.titleTrailingSpacing)
@@ -148,6 +166,27 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         
         navigationBarSetting()
         navigationBarTitleSetting("신규 튜터링")
+        
+        
+        tutoringTextField.doneAction = { [weak self] in
+            self?.tuteeTextField.becomeFirstResponder()
+        }
+        
+        tuteeTextField.doneAction = { [weak self] in
+            self?.paymentMethodTextField.becomeFirstResponder()
+        }
+        
+        paymentMethodTextField.pickerView.delegate = self
+        
+        paymentMethodTextField.doneAction = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel?.output.selectedIndex.accept(self.pickerIndex)
+        }
+        
+        viewModel?.output.selectedIndex
+            .map{ [weak self] in self?.pickerData[$0].name }
+            .bind(to : paymentMethodTextField.rx.text)
+            .disposed(by: disposeBag)
         
     }
     
@@ -182,3 +221,19 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
     }
 }
 
+
+
+extension TutoringCreateViewController : UIPickerViewDelegate , UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerIndex = row
+    }
+}

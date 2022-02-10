@@ -26,7 +26,7 @@ class MainPageViewModel : ViewModelProtocol {
     }
     
     struct Output {
-        let heeaderIndex = PublishRelay<IndexPath>()
+        let heeaderIndex = PublishRelay<Int>()
         let weekDays = BehaviorRelay<[DaysModel]>(value: [])
         let MonthText = BehaviorRelay<String>(value: "")
         let daySchedules = BehaviorRelay<[DaysModel]>(value: [DaysModel(name: "1월1일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월2일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월3일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월4일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월5일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월6일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월7일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월8일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월9일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월10일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월11일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월12일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월13일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월14일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])])
