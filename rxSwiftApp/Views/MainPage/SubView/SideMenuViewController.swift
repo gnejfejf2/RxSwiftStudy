@@ -47,8 +47,8 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
         $0.addArrangedSubview(informationButton)
     }
 
-    var informationButton = ImageTitleButton().then{
-        $0.titleLabel.text = "정보"
+    var informationButton = SideMenuTextView().then{
+        $0.text = "신규 튜터링"
     }
     
     
@@ -70,7 +70,8 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
         view.addSubview(topStackView)
         
         topStackView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
+            make.leading.trailing.equalToSuperview()
         }
         
     }

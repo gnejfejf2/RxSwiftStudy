@@ -7,9 +7,15 @@
 
 import UIKit
 
-class DonePickerView : UITextField {
 
+protocol DonePickerDelegate : ComponentSettingProtocol{
     
+    var doneAction : FunctionCloure? { get }
+   
+}
+
+class DonePickerView : UITextField , DonePickerDelegate{
+
     let pickerView = UIPickerView()
     
     var doneAction : FunctionCloure? = nil

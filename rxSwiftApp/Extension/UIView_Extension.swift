@@ -22,3 +22,13 @@ extension UIImageView {
     }
     
 }
+
+
+extension UITextView {
+    
+    func placeHolderSetting(_ placeHolder : String?){
+        self.text = placeHolder
+        self.textColor = .lightGray
+    }
+    
+}
