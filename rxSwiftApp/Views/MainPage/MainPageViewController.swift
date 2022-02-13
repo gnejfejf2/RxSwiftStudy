@@ -20,22 +20,25 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         $0.distribution = .fill
         $0.spacing = 10
         $0.alignment = .center
+        
+        
         $0.backgroundColor = .primaryColorReverse
         $0.addArrangedSubview(informationStack)
         $0.addArrangedSubview(headerStackView)
         $0.addArrangedSubview(calendarCollectionView)
         $0.addArrangedSubview(toDoTodayLabel)
-        $0.addArrangedSubview(daysHeaderCollectionView)
+        $0.addArrangedSubview(bottomSpacingView)
+        //        $0.addArrangedSubview(daysHeaderCollectionView)
     }
     
     lazy var informationStack = UIStackView().then{
         $0.axis = .horizontal
-     
+        
         $0.distribution = .equalSpacing
         $0.alignment = .center
         $0.addArrangedSubview(menuButton)
         $0.addArrangedSubview(myNameIcon)
-      
+        
     }
     
     var menuButton = UIButton().then{
@@ -93,36 +96,40 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     var toDoTodayLabel = UILabel().then{
         $0.font = .contentTitleBold
         $0.textAlignment = .left
-        $0.text = "이달의 스케줄"
+        $0.text = "진행중인 튜터링"
         $0.sizeToFit()
+    }
+    var bottomSpacingView = UILabel().then{
+        $0.snp.makeConstraints { make in
+            make.height.equalTo(0)
+        }
     }
     
     
+    //    let daysHeaderCollectionView : UICollectionView = {
+    //        let layout = UICollectionViewFlowLayout()
+    //        layout.minimumLineSpacing = 8
+    //        layout.minimumInteritemSpacing = 0
+    //        layout.scrollDirection = .horizontal
+    //        layout.itemSize = CGSize(width: 120, height: 40)
+    //        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
+    //        collectionView.indicatorStyle = .white
+    //        collectionView.translatesAutoresizingMaskIntoConstraints = false
+    //        collectionView.showsHorizontalScrollIndicator = false
+    //        collectionView.backgroundColor = .primaryColorReverse
+    //        collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
+    //
+    //        return collectionView
+    //    }()
     
-    let daysHeaderCollectionView : UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
-        layout.minimumInteritemSpacing = 0
-        layout.scrollDirection = .horizontal
-//        layout.itemSize = CGSize(width: 120, height: 40)
-        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
-        collectionView.indicatorStyle = .white
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = .primaryColorReverse
-        collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
-        
-        return collectionView
-    }()
     
-    
-    lazy var scheduleCollectionView  = UITableView(frame: .zero, style: .grouped).then {
+    lazy var tutoringTableView  = UITableView(frame: .zero).then {
         
         $0.separatorStyle = .none
         $0.showsVerticalScrollIndicator = false
-        $0.register(DayScheduleViewCell.self, forCellReuseIdentifier: DayScheduleViewCell.identifier)
+        $0.register(TutoringViewCell.self, forCellReuseIdentifier: TutoringViewCell.identifier)
         
-       
+        //        $0.sectionHeaderHeight = 0
         if #available(iOS 15.0, *) {
             $0.sectionHeaderTopPadding = 0
         }
@@ -140,7 +147,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     private var dommyDataSource = RxTableViewSectionedReloadDataSource<DaysModel> { dataSource, tableView, indexPath, item in
-        let cell = tableView.dequeueReusableCell(withIdentifier: DayScheduleViewCell.identifier, for: indexPath) as! DayScheduleViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TutoringViewCell.identifier, for: indexPath) as! TutoringViewCell
         cell.uiSetting(item)
         cell.selectionStyle = .none
         cell.selectedBackgroundView = .none
@@ -150,11 +157,15 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     
     var viewModel : MainPageViewModel?
     
+    private let calenderCellWidth : CGFloat = (UIScreen.main.bounds.width - 20) / 7
+    private let calenderCellHeight : CGFloat = 40
+    private let topStackbottomStackSpacing : CGFloat = 20
+    
     private let disposeBag : DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         uiDrawing()
         uiSetting()
         uiBinding()
@@ -179,7 +190,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         menuButton.snp.makeConstraints { make in
             make.width.height.equalTo(IconSize.Middle.rawValue)
-//            make.leading.equalToSuperview().offset(20)
+            //            make.leading.equalToSuperview().offset(20)
         }
         
         informationStack.snp.makeConstraints { make in
@@ -196,13 +207,13 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         toDoTodayLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(.titleLeadingSpacing)
             make.trailing.equalToSuperview().offset(.titleTrailingSpacing)
-        }
-        
-        daysHeaderCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
             
         }
+        
+        //        daysHeaderCollectionView.snp.makeConstraints { make in
+        //            make.leading.trailing.equalToSuperview()
+        //            make.height.equalTo(50)
+        //        }
         
         topSafeAreaCover.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
@@ -212,24 +223,24 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         DispatchQueue.main.asyncAfter(deadline: Dispatch.DispatchTime.now() + 0.1) { [weak self] in
             guard let self = self else { return }
-            self.view.addSubview(self.scheduleCollectionView)
-            self.view.sendSubviewToBack(self.scheduleCollectionView)
-            self.scheduleCollectionView.snp.makeConstraints { make in
+            self.view.addSubview(self.tutoringTableView)
+            self.view.sendSubviewToBack(self.tutoringTableView)
+            self.tutoringTableView.snp.makeConstraints { make in
                 make.top.leading.trailing.bottom.equalToSuperview()
             }
-            self.scheduleCollectionView.contentInset = UIEdgeInsets(top : self.topStackView.frame.height, left: 0 , bottom: 0 , right: 0)
+            self.tutoringTableView.contentInset = UIEdgeInsets(top : self.topStackView.frame.height, left: 0 , bottom: 0 , right: 0)
         }
     }
     
     
     func uiSetting(){
         view.backgroundColor = .primaryColorReverse
-       
+        
         calendarCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-        daysHeaderCollectionView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        scheduleCollectionView.rx.setDelegate(self)
+        //        daysHeaderCollectionView.rx.setDelegate(self)
+        //            .disposed(by: disposeBag)
+        tutoringTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
     }
@@ -242,15 +253,15 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
                 coordinator.start()
             }
             .disposed(by: disposeBag)
-      
         
-        daysHeaderCollectionView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                guard let sectionIndex = indexPath.element?.item else { return }
-                let index = IndexPath(row: 0, section: sectionIndex)
-                self?.scheduleCollectionView.selectRow(at: index , animated: true, scrollPosition: .top)
-            }.disposed(by: disposeBag)
-      
+        
+        //        daysHeaderCollectionView.rx.itemSelected
+        //            .subscribe { [weak self] indexPath in
+        //                guard let sectionIndex = indexPath.element?.item else { return }
+        //                let index = IndexPath(row: 0, section: sectionIndex)
+        //                self?.scheduleCollectionView.selectRow(at: index , animated: true, scrollPosition: .top)
+        //            }.disposed(by: disposeBag)
+        
         menuButton.rx.tap
             .bind{ [weak self] event in
                 guard let viewModel = self?.viewModel else { return }
@@ -279,14 +290,22 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         
         viewModel?.output.daySchedules
-            .bind(to: daysHeaderCollectionView.rx.items(cellIdentifier: DayCollectionViewCell.identifier, cellType: DayCollectionViewCell.self)) {
+            .bind(to: tutoringTableView.rx.items(cellIdentifier: TutoringViewCell.identifier, cellType: TutoringViewCell.self)) {
                 (row, element, cell) in
-                cell.bind(mySectionItem : element.name)
+                cell.uiSetting(element)
             }.disposed(by: disposeBag)
         
-        viewModel?.output.daySchedules
-            .bind(to : scheduleCollectionView.rx.items(dataSource: dommyDataSource))
-            .disposed(by: disposeBag)
+        //        viewModel?.output.daySchedules
+        //            .bind(to: scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){   (row, element, cell) in
+        //
+        //            })
+        //            .disposed(by: disposeBag)
+        
+        //            .bind(to : scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){
+        //                (row, element, cell) in
+        ////                cell.bind(mySectionItem : element.name)
+        //            })
+        //            .disposed(by: disposeBag)
         
         viewModel?.output.heeaderIndex
             .distinctUntilChanged()
@@ -313,11 +332,11 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         }
         self.calendarCollectionView.snp.remakeConstraints { make in
             make.width.equalToSuperview()
-            make.height.equalTo(((UIScreen.main.bounds.width - 20) / 7) * heightCount)
+            make.height.equalTo(calenderCellHeight * heightCount)
         }
         DispatchQueue.main.asyncAfter(deadline: Dispatch.DispatchTime.now() + 0.1) {
-            self.scheduleCollectionView.contentInset = UIEdgeInsets(top : self.topStackView.frame.height, left: 0 , bottom: 0 , right: 0)
-            self.scheduleCollectionView.setContentOffset(CGPoint(x: 0, y: -self.topStackView.frame.height - 50), animated: false)
+            self.tutoringTableView.contentInset = UIEdgeInsets(top : self.topStackView.frame.height, left: 0 , bottom: 0 , right: 0)
+            self.tutoringTableView.setContentOffset(CGPoint(x: 0, y: -self.topStackView.frame.height - 50), animated: false)
         }
     }
     
@@ -330,7 +349,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         
         
-        daysHeaderCollectionView.selectItem(at: IndexPath(item: getIndex, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+        //        daysHeaderCollectionView.selectItem(at: IndexPath(item: getIndex, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
     
@@ -342,10 +361,12 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
 extension MainPageViewController : UICollectionViewDelegate , UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == calendarCollectionView){
-            return  CGSize(width: (UIScreen.main.bounds.width - 20) / 7, height: (UIScreen.main.bounds.width - 20) / 7)
-        }else if(collectionView == daysHeaderCollectionView){
-            return CGSize(width: 80 , height: 30)
-        }else{
+            return  CGSize(width: calenderCellWidth , height: calenderCellHeight)
+        }
+        //        else if(collectionView == daysHeaderCollectionView){
+        //            return CGSize(width: 80 , height: 30)
+        //        }
+        else{
             return CGSize(width: UIScreen.main.bounds.width , height: 30)
         }
     }
@@ -355,13 +376,18 @@ extension MainPageViewController : UICollectionViewDelegate , UICollectionViewDe
 
 extension MainPageViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView == scheduleCollectionView){
+        if(scrollView == tutoringTableView){
             var segmentTransform = CATransform3DIdentity // Translate only.
-            let segmentViewOffset = -(scrollView.contentOffset.y + topStackView.frame.height + 50)
-            segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - daysHeaderCollectionView.frame.height - (topStackView.spacing * 2) - toDoTodayLabel.frame.height)), 0)
+            // segmentViewOffset 바텀스택뷰의 기본값
+            // 패딩이 늘어났으니 추가해야함
+            //+ 50 스크롤뷰를 사용하면 기본값이 + 50이 있는데 해당값
+            // -10 은 스크롤뷰와
+            let segmentViewOffset = -(scrollView.contentOffset.y + topStackView.frame.height + 50 )
+            //            segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - daysHeaderCollectionView.frame.height - (topStackView.spacing * 2) - toDoTodayLabel.frame.height)), 0)
+            segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - topStackbottomStackSpacing - (topStackView.spacing ) - toDoTodayLabel.frame.height)), 0)
             topStackView.layer.transform = segmentTransform
-            guard let topSection = scheduleCollectionView.indexPathsForVisibleRows?.first?[0] else { return }
-          
+            guard let topSection = tutoringTableView.indexPathsForVisibleRows?.first?[0] else { return }
+            
             viewModel?.output.heeaderIndex.accept(topSection)
             
         }
@@ -372,18 +398,20 @@ extension MainPageViewController : UIScrollViewDelegate {
 extension MainPageViewController : UITableViewDelegate {
     
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-        let categoryLabel = UILabel()
-        categoryLabel.text = viewModel?.output.daySchedules.value[section].name
-        categoryLabel.font = .mainContentsBold
-        headerView.addSubview(categoryLabel)
-        categoryLabel.snp.makeConstraints { make in
-            make.trailing.top.bottom.equalTo(headerView)
-            make.leading.equalToSuperview().offset(.titleLeadingSpacing)
-        }
-        return headerView
-    }
+    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    //        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
+    //        let categoryLabel = UILabel()
+    //        categoryLabel.text = viewModel?.output.daySchedules.value[section].name
+    //        categoryLabel.font = .mainContentsBold
+    //        headerView.addSubview(categoryLabel)
+    //        categoryLabel.snp.makeConstraints { make in
+    //            make.trailing.top.bottom.equalTo(headerView)
+    //            make.leading.equalToSuperview().offset(.titleLeadingSpacing)
+    //        }
+    //        return headerView
+    //    }
+   
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }

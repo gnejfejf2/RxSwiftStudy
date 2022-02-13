@@ -14,7 +14,7 @@ class CalendarViewCell: UICollectionViewCell {
     
     private var contentLabel = UILabel().then{
         
-        $0.font = .contentsBold
+        $0.font = .mainContentsBold
         $0.textColor = .primaryColor
         $0.textAlignment = .center
     }

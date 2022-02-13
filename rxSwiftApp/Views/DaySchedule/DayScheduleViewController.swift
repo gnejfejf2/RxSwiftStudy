@@ -35,8 +35,9 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
     }()
     
     
-    let emptryView = UIView().then{
-        $0.backgroundColor = .primaryColor
+    let emptyView = EmptyView().then{
+        $0.contentLabel.text = "등록된 스케줄이 없습니다."
+        $0.actionButton.setTitle("바로 등록하기", for: .normal)
     }
 
     var scheduleAdd = UIBarButtonItem().then{
@@ -71,14 +72,14 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
     func uiDrawing() {
         view.backgroundColor = .primaryColorReverse
         view.addSubview(daysScheduleCollectionView)
-        view.addSubview(emptryView)
+        view.addSubview(emptyView)
         daysScheduleCollectionView.snp.makeConstraints { make in
           
             make.edges.equalTo(view.safeAreaLayoutGuide)
         
         }
         
-        emptryView.snp.makeConstraints { make in
+        emptyView.snp.makeConstraints { make in
             make.edges.equalTo(daysScheduleCollectionView)
         }
     }
@@ -94,21 +95,18 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         daysScheduleCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        emptyView.delegate = self
+        
         
     }
     
     func uiBinding() {
         viewModel?.output.daySchedules
             .map { $0.count > 0 }
-            .bind(to: emptryView.rx.isHidden)
+            .bind(to: emptyView.rx.isHidden)
             .disposed(by: disposeBag)
         
-        emptryView.rx.tapGesture()
-            .when(.recognized)
-            .bind(onNext: { [weak self] _  in
-                self?.viewModel?.output.daySchedules.accept([DaysModel(name: "1월1일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월2일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월3일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월4일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월5일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월6일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월7일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월8일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월9일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월10일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월11일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월12일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월13일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월14일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])])
-            })
-            .disposed(by: disposeBag)
+
 
         
         viewModel?.output.daySchedules
@@ -129,5 +127,12 @@ extension DayScheduleViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
         return CGSize(width: UIScreen.main.bounds.width , height: 60)
+    }
+}
+
+
+extension DayScheduleViewController : EmptyViewActionProtocol {
+    func protocolAction() {
+        viewModel?.output.daySchedules.accept([DaysModel(name: "1월1일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월2일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월3일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월4일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월5일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월6일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월7일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월8일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월9일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월10일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월11일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월12일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월13일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월14일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])])
     }
 }
