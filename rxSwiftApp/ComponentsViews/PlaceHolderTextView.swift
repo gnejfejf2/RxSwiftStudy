@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol PlaceHolderTextViewDelegate : ComponentSettingProtocol{
-  
+    
     func doneButtonTextChange(text : String)
     func placeHolderSetting(_ placeHolder : String?)
 }
@@ -68,7 +68,7 @@ extension PlaceHolderTextView : UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if self.text == placeHolder {
             textView.text = nil
-            textView.textColor = .black
+            textView.textColor = .primaryColor
         }
     }
     

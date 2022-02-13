@@ -158,6 +158,7 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
     
     var studentRemarksTextView = PlaceHolderTextView(placeHolder : "수강생을 적어주세요").then{
         $0.textAlignment = .left
+      
     }
     
   

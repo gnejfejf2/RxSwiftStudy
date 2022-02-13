@@ -18,6 +18,17 @@ extension UIFont {
   class var title: UIFont {
     return UIFont(name: "SUIT-Regular", size: 28.0)!
   }
+    
+    ///Bold - 28
+    class var subTitleBold: UIFont {
+        ///Bold - 28
+        return UIFont(name: "SUIT-Bold", size: 24.0)!
+    }
+    ///Regular - 28
+    class var subtitle: UIFont {
+        return UIFont(name: "SUIT-Regular", size: 24.0)!
+    }
+    
     ///Bold - 18.0
   class var contentTitleBold: UIFont {
       ///Regular - 28

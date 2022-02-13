@@ -108,9 +108,7 @@ class StickyHeaderScrollViewController: UIViewController {
         
         
         
-        stickyScrollView.backgroundColor = .blue
         
-        bottomContentView.backgroundColor = .brown
         
         stickyHeaderView = tempHeader
         stickyHeaderSetting()

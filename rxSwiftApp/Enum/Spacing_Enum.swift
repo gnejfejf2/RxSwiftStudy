@@ -54,6 +54,9 @@ extension ConstraintConstantTarget where Self == CGFloat  {
     static var pageTopSpacing: CGFloat {
         return 10
     }
+    static var pageBottomSpacing: CGFloat {
+        return -10
+    }
     
     static var titleLeadingSpacing : CGFloat {
         return 10

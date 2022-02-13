@@ -43,7 +43,6 @@ class SecondTabViewController: UIViewController, UIScrollViewDelegate  {
         let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         collectionView.indicatorStyle = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .blue
         collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
         
         return collectionView

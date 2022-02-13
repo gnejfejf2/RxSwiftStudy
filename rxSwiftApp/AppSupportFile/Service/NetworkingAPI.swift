@@ -6,52 +6,49 @@ import RxSwift
 typealias ApiParameter = [String : Any]
 
 protocol NetworkingService {
-//    func request(_ api: NetworkAPI) -> Single<Response>
-    
-   // func Request<T: Decodable>(_ api: NetworkAPI) -> Observable<Result<T>>
     
     func request(_ api: NetworkAPI) -> Single<Response>
-   
+    
     
     var jsonDecoder: JSONDecoder { get }
     
     
 }
-//
+
 final class NetworkingAPI: NetworkingService {
     static let shared : NetworkingAPI = {
         if(true){
-                return NetworkingAPI()
+            return NetworkingAPI()
         }else{
-                return NetworkingAPI()
+            return NetworkingAPI()
         }
     }()
     
     var jsonDecoder: JSONDecoder {
-      let decoder = JSONDecoder()
-      return decoder
+        let decoder = JSONDecoder()
+        return decoder
     }
     
     let provider: MoyaProvider<NetworkAPI>
-
+    
     init(provider: MoyaProvider<NetworkAPI> = MoyaProvider<NetworkAPI>()) {
         self.provider = provider
     }
-
     
     
- 
+    
+    
     
     
     func request(_ api: NetworkAPI) -> Single<Response> {
-       
+        
         return provider.rx
             .request(api)
             .flatMap {
                 if $0.statusCode == 401{
                     throw TokenError.tokenExpired
                 }else{
-                   return Single.just($0)
+                    return Single.just($0)
                 }
             }
             .retry(when: { (error : Observable<TokenError>) in
@@ -61,10 +58,10 @@ final class NetworkingAPI: NetworkingService {
             })
             .filterSuccessfulStatusCodes()
             .retry(3)
-           // .asObservable()
-           // .map{ try JSONDecoder().decode(TestModel.self, from: $0.data)  }
+        // .asObservable()
+        // .map{ try JSONDecoder().decode(TestModel.self, from: $0.data)  }
         
-            
+        
         
         
         
@@ -75,11 +72,11 @@ final class NetworkingAPI: NetworkingService {
     func renewalToken() -> Single<Response> {
         return request(.renewalToken)
     }
-//
-//
-////            //eraseToAnyPublisher은 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher
-////            .eraseToAnyPublisher()
-//    }
+    //
+    //
+    ////            //eraseToAnyPublisher은 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher
+    ////            .eraseToAnyPublisher()
+    //    }
 }
 
 struct TestModel :  Codable {
@@ -109,7 +106,7 @@ extension NetworkAPI : TargetType {
     
     //경로
     var path: String {
-       return "/indexTest1.php"
+        return "/indexTest1.php"
     }
     //통신을 get , post , put 등 무엇으로 할지 이곳에서 결정한다 값이 없다면 디폴트로 Get을 요청
     var method : Moya.Method {
@@ -125,5 +122,21 @@ extension NetworkAPI : TargetType {
             
         }
     }
-
+    
+    var sampleData: Data {
+        switch self {
+        case .banner:
+            return stubbedResponse("BeerList")
+        case .renewalToken:
+            return stubbedResponse("RandomBeer")
+            
+        }
+    }
+    func stubbedResponse(_ filename: String) -> Data! {
+        let bundlePath = Bundle.main.path(forResource: "Stub", ofType: "bundle")
+        let bundle = Bundle(path: bundlePath!)
+        let path = bundle?.path(forResource: filename, ofType: "json")
+        return (try? Data(contentsOf: URL(fileURLWithPath: path!)))
+    }
+    
 }
