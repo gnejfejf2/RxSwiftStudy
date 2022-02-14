@@ -25,6 +25,8 @@ PODS:
   - RxRelay (6.2.0):
     - RxSwift (= 6.2.0)
   - RxSwift (6.2.0)
+  - RxTest (6.2.0):
+    - RxSwift (= 6.2.0)
   - SideMenu (6.5.0)
   - SnapKit (5.0.1)
   - Then (2.7.0)
@@ -38,6 +40,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxGesture
   - RxSwift
+  - RxTest
   - SideMenu
   - SnapKit
   - Then
@@ -54,6 +57,7 @@ SPEC REPOS:
     - RxGesture
     - RxRelay
     - RxSwift
+    - RxTest
     - SideMenu
     - SnapKit
     - Then
@@ -69,10 +73,11 @@ SPEC CHECKSUMS:
   RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  RxTest: 0c692fa672b694373ba86d2b00033595297a2831
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: e147b78cedcd66e79f653c0f59e97d8bcdf9c266
+PODFILE CHECKSUM: f406551c4353325754804839493452cd210dd2d8
 
 COCOAPODS: 1.11.2

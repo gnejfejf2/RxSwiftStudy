@@ -48,6 +48,16 @@
                ReferencedContainer = "container:rxSwiftApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E07F7B4527BA12D500D7795A"
+               BuildableName = "rxUnitTest.xctest"
+               BlueprintName = "rxUnitTest"
+               ReferencedContainer = "container:rxSwiftApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -8,7 +8,8 @@
 
 protocol ViewModelProtocol {
 
- 
+    
+    
     func bindInput()
 
     func bindOutput()

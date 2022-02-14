@@ -13,7 +13,7 @@ import UIKit
 
 class MainPageViewModel : ViewModelProtocol {
     
-    var network: NetworkingService = NetworkingAPI.shared
+    let networkAPI : NetworkingService = NetworkingAPI.shared
     
     weak var coordinator : MainPageViewCoordinator?
 
@@ -63,7 +63,7 @@ class MainPageViewModel : ViewModelProtocol {
     
     
     
-    init(){
+    init(networkAPI : NetworkingService = NetworkingAPI.shared){
         bindInput()
         bindOutput()
     }
