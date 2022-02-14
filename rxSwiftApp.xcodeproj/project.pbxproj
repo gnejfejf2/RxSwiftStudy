@@ -92,8 +92,9 @@
 		E095D0F627B787D6000FE856 /* ScheduleListViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0F527B787D6000FE856 /* ScheduleListViewCoordinator.swift */; };
 		E095D0F927B78990000FE856 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0F827B78990000FE856 /* EmptyView.swift */; };
 		E095D10127B8EFD4000FE856 /* TutoringCreateViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D10027B8EFD4000FE856 /* TutoringCreateViewCoordinator.swift */; };
+		E095D10427B8F14B000FE856 /* ScheduleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D10327B8F14B000FE856 /* ScheduleComponent.swift */; };
 		E0B5424127B228C900EF4BAF /* TutoringViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B5424027B228C900EF4BAF /* TutoringViewCell.swift */; };
-		E0D385B3279FBE6C0035A1CD /* baseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B2279FBE6C0035A1CD /* baseColor.swift */; };
+		E0D385B3279FBE6C0035A1CD /* BaseColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B2279FBE6C0035A1CD /* BaseColor.swift */; };
 		E0D385B9279FC5BC0035A1CD /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385B8279FC5BC0035A1CD /* BannerModel.swift */; };
 		E0D385BB279FD4570035A1CD /* ReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D385BA279FD4570035A1CD /* ReqModel.swift */; };
 		E0DE23492797DB7500790EE7 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE23482797DB7500790EE7 /* Meal.swift */; };
@@ -208,8 +209,9 @@
 		E095D0F527B787D6000FE856 /* ScheduleListViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListViewCoordinator.swift; sourceTree = "<group>"; };
 		E095D0F827B78990000FE856 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		E095D10027B8EFD4000FE856 /* TutoringCreateViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringCreateViewCoordinator.swift; sourceTree = "<group>"; };
+		E095D10327B8F14B000FE856 /* ScheduleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleComponent.swift; sourceTree = "<group>"; };
 		E0B5424027B228C900EF4BAF /* TutoringViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutoringViewCell.swift; sourceTree = "<group>"; };
-		E0D385B2279FBE6C0035A1CD /* baseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baseColor.swift; sourceTree = "<group>"; };
+		E0D385B2279FBE6C0035A1CD /* BaseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColor.swift; sourceTree = "<group>"; };
 		E0D385B8279FC5BC0035A1CD /* BannerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		E0D385BA279FD4570035A1CD /* ReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqModel.swift; sourceTree = "<group>"; };
 		E0DE23482797DB7500790EE7 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				E095D0EB27B5E7D8000FE856 /* SideMenuLabel.swift */,
 				E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */,
 				E095D0DB27B3BE31000FE856 /* TitleLabel.swift */,
+				E095D10327B8F14B000FE856 /* ScheduleComponent.swift */,
 			);
 			path = ComponentsViews;
 			sourceTree = "<group>";
@@ -357,7 +360,6 @@
 				E0813A5327816A2A00130A5A /* Assets.xcassets */,
 				E0813A5527816A2A00130A5A /* LaunchScreen.storyboard */,
 				E0813A5827816A2A00130A5A /* Info.plist */,
-				E0D385B2279FBE6C0035A1CD /* baseColor.swift */,
 			);
 			path = rxSwiftApp;
 			sourceTree = "<group>";
@@ -515,6 +517,7 @@
 		E092CA8927AA566E008FB481 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E0D385B2279FBE6C0035A1CD /* BaseColor.swift */,
 				E092CA8A27AA567F008FB481 /* Font_Extension.swift */,
 				E095D0BF27B352B4000FE856 /* UIViewController_Extension.swift */,
 				E095D0D227B3819C000FE856 /* UIView_Extension.swift */,
@@ -881,11 +884,12 @@
 				E095D0BA27B342D2000FE856 /* MainPageViewController.swift in Sources */,
 				E095D0BE27B34A71000FE856 /* ViewSettingProtocol.swift in Sources */,
 				E0813AA02781A5CD00130A5A /* ThirdTabViewController.swift in Sources */,
-				E0D385B3279FBE6C0035A1CD /* baseColor.swift in Sources */,
+				E0D385B3279FBE6C0035A1CD /* BaseColor.swift in Sources */,
 				E092CA9127B1229A008FB481 /* StickyHeaderViewController.swift in Sources */,
 				E095D0D127B38160000FE856 /* Spacing_Enum.swift in Sources */,
 				E095D0CD27B37B0F000FE856 /* SideMenuViewModel.swift in Sources */,
 				E03005782782C87D002ADE0D /* ThirdTabViewCoordinator.swift in Sources */,
+				E095D10427B8F14B000FE856 /* ScheduleComponent.swift in Sources */,
 				E095D0E627B4DE34000FE856 /* Date_Extension.swift in Sources */,
 				E0B5424127B228C900EF4BAF /* TutoringViewCell.swift in Sources */,
 				E0D385BB279FD4570035A1CD /* ReqModel.swift in Sources */,

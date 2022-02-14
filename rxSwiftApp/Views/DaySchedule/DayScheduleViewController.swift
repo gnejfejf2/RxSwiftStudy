@@ -101,19 +101,18 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
     }
     
     func uiBinding() {
+        
         viewModel?.output.daySchedules
             .map { $0.count > 0 }
             .bind(to: emptyView.rx.isHidden)
             .disposed(by: disposeBag)
-        
-
-
         
         viewModel?.output.daySchedules
             .bind(to: daysScheduleCollectionView.rx.items(cellIdentifier: DayScheduleCollectionViewCell.identifier, cellType: DayScheduleCollectionViewCell.self)) {
                 (row, element, cell) in
                 cell.uiSetting(element.name)
             }.disposed(by: disposeBag)
+        
     }
     
     func eventBinding() {

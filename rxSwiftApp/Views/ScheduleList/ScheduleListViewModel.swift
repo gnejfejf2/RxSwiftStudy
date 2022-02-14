@@ -38,8 +38,6 @@ class ScheduleListViewModel : ViewModelProtocol {
     
     func bindInput() {
   
-        
-        
     }
     
     func bindOutput() {

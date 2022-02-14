@@ -16,13 +16,8 @@ protocol NetworkingService {
 }
 
 final class NetworkingAPI: NetworkingService {
-    static let shared : NetworkingAPI = {
-        if(true){
-            return NetworkingAPI()
-        }else{
-            return NetworkingAPI()
-        }
-    }()
+    static let shared : NetworkingAPI = NetworkingAPI()
+    
     
     var jsonDecoder: JSONDecoder {
         let decoder = JSONDecoder()
@@ -58,30 +53,15 @@ final class NetworkingAPI: NetworkingService {
             })
             .filterSuccessfulStatusCodes()
             .retry(3)
-        // .asObservable()
-        // .map{ try JSONDecoder().decode(TestModel.self, from: $0.data)  }
-        
-        
-        
-        
-        
-        //            //eraseToAnyPublisher은 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher
-        //            .eraseToAnyPublisher()
+
     }
     
     func renewalToken() -> Single<Response> {
         return request(.renewalToken)
     }
-    //
-    //
-    ////            //eraseToAnyPublisher은 지금까지의 데이터 스트림이 어떠했던 최종적인 형태의 Publisher
-    ////            .eraseToAnyPublisher()
-    //    }
+ 
 }
 
-struct TestModel :  Codable {
-    var test : String
-}
 
 enum NetworkAPI{
     
@@ -132,6 +112,7 @@ extension NetworkAPI : TargetType {
             
         }
     }
+    
     func stubbedResponse(_ filename: String) -> Data! {
         let bundlePath = Bundle.main.path(forResource: "Stub", ofType: "bundle")
         let bundle = Bundle(path: bundlePath!)
