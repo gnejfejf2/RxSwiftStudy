@@ -38,7 +38,7 @@ final class NetworkingAPI: NetworkingService {
     
     
     
-    
+    //데이터통신코드
     func request(_ api: NetworkAPI) -> Single<Response> {
         
         return provider.rx
