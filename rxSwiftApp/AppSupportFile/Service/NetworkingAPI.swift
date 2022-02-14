@@ -26,18 +26,10 @@ final class NetworkingAPI: NetworkingService {
     
     let provider: MoyaProvider<NetworkAPI>
     
+    //provider 객체 삽입
     init(provider: MoyaProvider<NetworkAPI> = MoyaProvider<NetworkAPI>()) {
         self.provider = provider
     }
-    
-       
-    
-    
-    
-    
-    
-    
-    
     //데이터통신코드
     func request(_ api: NetworkAPI) -> Single<Response> {
         
