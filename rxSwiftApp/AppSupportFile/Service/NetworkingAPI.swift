@@ -30,6 +30,10 @@ final class NetworkingAPI: NetworkingService {
         self.provider = provider
     }
     
+       
+    
+    
+    
     
     
     
@@ -55,7 +59,7 @@ final class NetworkingAPI: NetworkingService {
             .retry(3)
 
     }
-    
+    //토큰 리프래시
     func renewalToken() -> Single<Response> {
         return request(.renewalToken)
     }
