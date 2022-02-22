@@ -23,6 +23,7 @@
 		E030059C278406A0002ADE0D /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030059B278406A0002ADE0D /* CustomError.swift */; };
 		E03005A32784106E002ADE0D /* BeerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03005A22784106E002ADE0D /* BeerModel.swift */; };
 		E07F7B4927BA12D500D7795A /* rxUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F7B4827BA12D500D7795A /* rxUnitTest.swift */; };
+		E07F7B5027BA28E100D7795A /* CalendarViewWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07F7B4F27BA28E100D7795A /* CalendarViewWeekCell.swift */; };
 		E0813A4B27816A2900130A5A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A4A27816A2900130A5A /* AppDelegate.swift */; };
 		E0813A4D27816A2900130A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A4C27816A2900130A5A /* SceneDelegate.swift */; };
 		E0813A5427816A2A00130A5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0813A5327816A2A00130A5A /* Assets.xcassets */; };
@@ -42,7 +43,6 @@
 		E0813AA02781A5CD00130A5A /* ThirdTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0813A9F2781A5CD00130A5A /* ThirdTabViewController.swift */; };
 		E092CA7A27AA563D008FB481 /* SUIT-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6B27AA563D008FB481 /* SUIT-Thin.otf */; };
 		E092CA7B27AA563D008FB481 /* SUIT-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6C27AA563D008FB481 /* SUIT-Regular.otf */; };
-		E092CA7C27AA563D008FB481 /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6D27AA563D008FB481 /* NotoSansKR-Light.otf */; };
 		E092CA7D27AA563D008FB481 /* SUIT-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6E27AA563D008FB481 /* SUIT-Heavy.otf */; };
 		E092CA7E27AA563D008FB481 /* SUIT-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA6F27AA563D008FB481 /* SUIT-Bold.otf */; };
 		E092CA7F27AA563D008FB481 /* SUIT-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7027AA563D008FB481 /* SUIT-Light.otf */; };
@@ -50,13 +50,8 @@
 		E092CA8127AA563D008FB481 /* SUIT-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7227AA563D008FB481 /* SUIT-SemiBold.otf */; };
 		E092CA8227AA563D008FB481 /* SUIT-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7327AA563D008FB481 /* SUIT-Medium.otf */; };
 		E092CA8327AA563D008FB481 /* SUIT-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7427AA563D008FB481 /* SUIT-ExtraBold.otf */; };
-		E092CA8427AA563D008FB481 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7527AA563D008FB481 /* NotoSansKR-Bold.otf */; };
-		E092CA8527AA563D008FB481 /* NotoSansKR-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7627AA563D008FB481 /* NotoSansKR-Thin.otf */; };
-		E092CA8627AA563D008FB481 /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7727AA563D008FB481 /* NotoSansKR-Black.otf */; };
-		E092CA8727AA563D008FB481 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7827AA563D008FB481 /* NotoSansKR-Medium.otf */; };
-		E092CA8827AA563D008FB481 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E092CA7927AA563D008FB481 /* NotoSansKR-Regular.otf */; };
 		E092CA8B27AA567F008FB481 /* Font_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA8A27AA567F008FB481 /* Font_Extension.swift */; };
-		E092CA8D27AB9698008FB481 /* CalendarViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA8C27AB9698008FB481 /* CalendarViewCell.swift */; };
+		E092CA8D27AB9698008FB481 /* CalendarViewDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA8C27AB9698008FB481 /* CalendarViewDayCell.swift */; };
 		E092CA9127B1229A008FB481 /* StickyHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */; };
 		E095D0BA27B342D2000FE856 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0B727B342D2000FE856 /* MainPageViewController.swift */; };
 		E095D0BB27B342D2000FE856 /* MainPageViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E095D0B827B342D2000FE856 /* MainPageViewCoordinator.swift */; };
@@ -130,6 +125,7 @@
 		E03005A22784106E002ADE0D /* BeerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerModel.swift; sourceTree = "<group>"; };
 		E07F7B4627BA12D500D7795A /* rxUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rxUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07F7B4827BA12D500D7795A /* rxUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rxUnitTest.swift; sourceTree = "<group>"; };
+		E07F7B4F27BA28E100D7795A /* CalendarViewWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewWeekCell.swift; sourceTree = "<group>"; };
 		E0813A4727816A2900130A5A /* rxSwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rxSwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0813A4A27816A2900130A5A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0813A4C27816A2900130A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,7 +147,6 @@
 		E0813A9F2781A5CD00130A5A /* ThirdTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTabViewController.swift; sourceTree = "<group>"; };
 		E092CA6B27AA563D008FB481 /* SUIT-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Thin.otf"; sourceTree = "<group>"; };
 		E092CA6C27AA563D008FB481 /* SUIT-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.otf"; sourceTree = "<group>"; };
-		E092CA6D27AA563D008FB481 /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
 		E092CA6E27AA563D008FB481 /* SUIT-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Heavy.otf"; sourceTree = "<group>"; };
 		E092CA6F27AA563D008FB481 /* SUIT-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.otf"; sourceTree = "<group>"; };
 		E092CA7027AA563D008FB481 /* SUIT-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Light.otf"; sourceTree = "<group>"; };
@@ -159,13 +154,8 @@
 		E092CA7227AA563D008FB481 /* SUIT-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.otf"; sourceTree = "<group>"; };
 		E092CA7327AA563D008FB481 /* SUIT-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.otf"; sourceTree = "<group>"; };
 		E092CA7427AA563D008FB481 /* SUIT-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-ExtraBold.otf"; sourceTree = "<group>"; };
-		E092CA7527AA563D008FB481 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
-		E092CA7627AA563D008FB481 /* NotoSansKR-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.otf"; sourceTree = "<group>"; };
-		E092CA7727AA563D008FB481 /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
-		E092CA7827AA563D008FB481 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
-		E092CA7927AA563D008FB481 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		E092CA8A27AA567F008FB481 /* Font_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font_Extension.swift; sourceTree = "<group>"; };
-		E092CA8C27AB9698008FB481 /* CalendarViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCell.swift; sourceTree = "<group>"; };
+		E092CA8C27AB9698008FB481 /* CalendarViewDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewDayCell.swift; sourceTree = "<group>"; };
 		E092CA9027B1229A008FB481 /* StickyHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderViewController.swift; sourceTree = "<group>"; };
 		E095D0B727B342D2000FE856 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		E095D0B827B342D2000FE856 /* MainPageViewCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewCoordinator.swift; sourceTree = "<group>"; };
@@ -266,7 +256,6 @@
 		E030058C2783D1AA002ADE0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E0D385B8279FC5BC0035A1CD /* BannerModel.swift */,
 				E03005902783D21D002ADE0D /* Item */,
 				E030058F2783D210002ADE0D /* Response */,
 				E0D385BA279FD4570035A1CD /* ReqModel.swift */,
@@ -277,6 +266,7 @@
 		E030058F2783D210002ADE0D /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				E0D385B8279FC5BC0035A1CD /* BannerModel.swift */,
 				E030058D2783D1F3002ADE0D /* PoiSearchResponse.swift */,
 			);
 			path = Response;
@@ -314,6 +304,13 @@
 				E07F7B4827BA12D500D7795A /* rxUnitTest.swift */,
 			);
 			path = rxUnitTest;
+			sourceTree = "<group>";
+		};
+		E07F7B5127BA2A4D00D7795A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E0813A3E27816A2900130A5A = {
@@ -468,7 +465,6 @@
 			children = (
 				E092CA6B27AA563D008FB481 /* SUIT-Thin.otf */,
 				E092CA6C27AA563D008FB481 /* SUIT-Regular.otf */,
-				E092CA6D27AA563D008FB481 /* NotoSansKR-Light.otf */,
 				E092CA6E27AA563D008FB481 /* SUIT-Heavy.otf */,
 				E092CA6F27AA563D008FB481 /* SUIT-Bold.otf */,
 				E092CA7027AA563D008FB481 /* SUIT-Light.otf */,
@@ -476,11 +472,6 @@
 				E092CA7227AA563D008FB481 /* SUIT-SemiBold.otf */,
 				E092CA7327AA563D008FB481 /* SUIT-Medium.otf */,
 				E092CA7427AA563D008FB481 /* SUIT-ExtraBold.otf */,
-				E092CA7527AA563D008FB481 /* NotoSansKR-Bold.otf */,
-				E092CA7627AA563D008FB481 /* NotoSansKR-Thin.otf */,
-				E092CA7727AA563D008FB481 /* NotoSansKR-Black.otf */,
-				E092CA7827AA563D008FB481 /* NotoSansKR-Medium.otf */,
-				E092CA7927AA563D008FB481 /* NotoSansKR-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -546,6 +537,7 @@
 		E095D0F027B78783000FE856 /* ScheduleList */ = {
 			isa = PBXGroup;
 			children = (
+				E07F7B5127BA2A4D00D7795A /* Cell */,
 				E095D0F127B787B3000FE856 /* ScheduleListViewController.swift */,
 				E095D0F327B787BE000FE856 /* ScheduleListViewModel.swift */,
 				E095D0F527B787D6000FE856 /* ScheduleListViewCoordinator.swift */,
@@ -564,7 +556,8 @@
 		E0D385B6279FC3550035A1CD /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E092CA8C27AB9698008FB481 /* CalendarViewCell.swift */,
+				E07F7B4F27BA28E100D7795A /* CalendarViewWeekCell.swift */,
+				E092CA8C27AB9698008FB481 /* CalendarViewDayCell.swift */,
 				E0B5424027B228C900EF4BAF /* TutoringViewCell.swift */,
 			);
 			path = Cell;
@@ -683,18 +676,12 @@
 			files = (
 				E092CA8227AA563D008FB481 /* SUIT-Medium.otf in Resources */,
 				E092CA7D27AA563D008FB481 /* SUIT-Heavy.otf in Resources */,
-				E092CA8427AA563D008FB481 /* NotoSansKR-Bold.otf in Resources */,
-				E092CA8627AA563D008FB481 /* NotoSansKR-Black.otf in Resources */,
-				E092CA8827AA563D008FB481 /* NotoSansKR-Regular.otf in Resources */,
 				E092CA8027AA563D008FB481 /* SUIT-ExtraLight.otf in Resources */,
 				E0813A5727816A2A00130A5A /* LaunchScreen.storyboard in Resources */,
 				E092CA8327AA563D008FB481 /* SUIT-ExtraBold.otf in Resources */,
 				E092CA8127AA563D008FB481 /* SUIT-SemiBold.otf in Resources */,
-				E092CA7C27AA563D008FB481 /* NotoSansKR-Light.otf in Resources */,
-				E092CA8527AA563D008FB481 /* NotoSansKR-Thin.otf in Resources */,
 				E0813A5427816A2A00130A5A /* Assets.xcassets in Resources */,
 				E092CA7A27AA563D008FB481 /* SUIT-Thin.otf in Resources */,
-				E092CA8727AA563D008FB481 /* NotoSansKR-Medium.otf in Resources */,
 				E092CA7E27AA563D008FB481 /* SUIT-Bold.otf in Resources */,
 				E092CA7B27AA563D008FB481 /* SUIT-Regular.otf in Resources */,
 				E092CA7F27AA563D008FB481 /* SUIT-Light.otf in Resources */,
@@ -799,13 +786,14 @@
 			files = (
 				E0813A88278183E400130A5A /* Router.swift in Sources */,
 				E0813A8B2781866B00130A5A /* AppMainCoordinator.swift in Sources */,
+				E07F7B5027BA28E100D7795A /* CalendarViewWeekCell.swift in Sources */,
 				E0DE23492797DB7500790EE7 /* Meal.swift in Sources */,
 				E095D0C327B35A35000FE856 /* DayScheduleCollectionViewCell.swift in Sources */,
 				E095D0C627B37864000FE856 /* IconSize_Enum.swift in Sources */,
 				E0813A7E27817E7900130A5A /* Coordinator.swift in Sources */,
 				E030059C278406A0002ADE0D /* CustomError.swift in Sources */,
 				E03005802782E4EB002ADE0D /* ViewModelProtocol.swift in Sources */,
-				E092CA8D27AB9698008FB481 /* CalendarViewCell.swift in Sources */,
+				E092CA8D27AB9698008FB481 /* CalendarViewDayCell.swift in Sources */,
 				E030057A2782C8E8002ADE0D /* TabViewCoordinator.swift in Sources */,
 				E0813A9527819B2100130A5A /* CoordinatorFinishDelegate.swift in Sources */,
 				E095D0F427B787BE000FE856 /* ScheduleListViewModel.swift in Sources */,

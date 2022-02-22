@@ -252,29 +252,17 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         
         navigationBarSetting()
         navigationBarTitleSetting("신규 튜터링")
-        
-        
         tutoringTextField.doneAction = { [weak self] in
             self?.tuteeTextField.becomeFirstResponder()
         }
-        
         tuteeTextField.doneAction = { [weak self] in
             self?.paymentMethodTextField.becomeFirstResponder()
         }
-        
         paymentMethodTextField.pickerView.delegate = self
-        
         paymentMethodTextField.doneAction = { [weak self] in
             guard let self = self else { return }
             self.viewModel?.output.selectedIndex.accept(self.pickerIndex)
         }
-        
-        
-        
-        
-        
-       
-        
     }
     
     func uiBinding() {
@@ -301,7 +289,6 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
             paymentMethodStackView.isHidden = true
         }else if(index == 1){
             paymentMethodStackView.isHidden = false
-            
             paymentDateTitleLabel.isHidden = false
             paymentDateTextField.isHidden = false
             progressCountTitleLabel.isHidden = true
@@ -339,14 +326,13 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
     
     
     @objc func keyboardWillShow(_ notification : NSNotification){
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0.3, animations: { [weak self] in
-                self?.bottomConstraint.constant = -(keyboardSize.height + Spacing.spacingL.rawValue)
-            })
-        }
+        guard let keyboardFrame = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+            
+        mainScrollView.contentInset.bottom = view.convert(keyboardFrame.cgRectValue, from: nil).size.height
+
     }
     @objc func keyboardWillHide(_ notification: NSNotification){
-        bottomConstraint.constant = 0
+        mainScrollView.contentInset.bottom = 0
     }
 }
 

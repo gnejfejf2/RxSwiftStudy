@@ -86,7 +86,8 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         collectionView.indicatorStyle = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifier)
+        collectionView.register(CalendarViewDayCell.self, forCellWithReuseIdentifier: CalendarViewDayCell.identifier)
+        collectionView.register(CalendarViewWeekCell.self, forCellWithReuseIdentifier: CalendarViewWeekCell.identifier)
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .primaryColorReverse
         collectionView.showsHorizontalScrollIndicator = false
@@ -104,24 +105,6 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
             make.height.equalTo(0)
         }
     }
-    
-    
-    //    let daysHeaderCollectionView : UICollectionView = {
-    //        let layout = UICollectionViewFlowLayout()
-    //        layout.minimumLineSpacing = 8
-    //        layout.minimumInteritemSpacing = 0
-    //        layout.scrollDirection = .horizontal
-    //        layout.itemSize = CGSize(width: 120, height: 40)
-    //        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
-    //        collectionView.indicatorStyle = .white
-    //        collectionView.translatesAutoresizingMaskIntoConstraints = false
-    //        collectionView.showsHorizontalScrollIndicator = false
-    //        collectionView.backgroundColor = .primaryColorReverse
-    //        collectionView.register(DayCollectionViewCell.self, forCellWithReuseIdentifier: DayCollectionViewCell.identifier)
-    //
-    //        return collectionView
-    //    }()
-    
     
     lazy var tutoringTableView  = UITableView(frame: .zero).then {
         
@@ -141,9 +124,22 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     lazy var calendarDataSource = RxCollectionViewSectionedReloadDataSource<DaysModel> { dataSource, collectionView , indexPath, item in
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.identifier, for: indexPath) as! CalendarViewCell
-        cell.uiSetting(item , indexPath[1])
-        return cell
+        if(indexPath.first == 0){
+        
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewWeekCell.identifier, for: indexPath) as! CalendarViewWeekCell
+            cell.uiSetting(item , indexPath[1])
+            
+             return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewDayCell.identifier, for: indexPath) as! CalendarViewDayCell
+            cell.uiSetting(item , indexPath[1])
+            
+             return cell
+        }
+        
+        
+        
+       
     }
     
     private var dommyDataSource = RxTableViewSectionedReloadDataSource<DaysModel> { dataSource, tableView, indexPath, item in
@@ -155,11 +151,13 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     
-    var viewModel : MainPageViewModel?
-    
+   
     private let calenderCellWidth : CGFloat = (UIScreen.main.bounds.width - 20) / 7
     private let calenderCellHeight : CGFloat = 40
     private let topStackbottomStackSpacing : CGFloat = 20
+   
+    
+    var viewModel : MainPageViewModel?
     
     private let disposeBag : DisposeBag = DisposeBag()
     
@@ -186,8 +184,6 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
             make.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
         }
         
-        
-        
         menuButton.snp.makeConstraints { make in
             make.width.height.equalTo(IconSize.Middle.rawValue)
             //            make.leading.equalToSuperview().offset(20)
@@ -209,12 +205,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
             make.trailing.equalToSuperview().offset(.titleTrailingSpacing)
             
         }
-        
-        //        daysHeaderCollectionView.snp.makeConstraints { make in
-        //            make.leading.trailing.equalToSuperview()
-        //            make.height.equalTo(50)
-        //        }
-        
+                
         topSafeAreaCover.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -238,8 +229,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         calendarCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
-        //        daysHeaderCollectionView.rx.setDelegate(self)
-        //            .disposed(by: disposeBag)
+        
         tutoringTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
@@ -253,21 +243,14 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
                 coordinator.start()
             }
             .disposed(by: disposeBag)
-        
-        
-        //        daysHeaderCollectionView.rx.itemSelected
-        //            .subscribe { [weak self] indexPath in
-        //                guard let sectionIndex = indexPath.element?.item else { return }
-        //                let index = IndexPath(row: 0, section: sectionIndex)
-        //                self?.scheduleCollectionView.selectRow(at: index , animated: true, scrollPosition: .top)
-        //            }.disposed(by: disposeBag)
-        
+
         menuButton.rx.tap
             .bind{ [weak self] event in
                 guard let viewModel = self?.viewModel else { return }
                 viewModel.input.menuOpen.accept(event)
             }
             .disposed(by: disposeBag)
+
         nextMonth.rx.tap
             .bind(onNext: { [weak self] in
                 self?.viewModel?.input.monthController.onNext(1)
@@ -303,7 +286,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         
         //            .bind(to : scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){
         //                (row, element, cell) in
-        ////                cell.bind(mySectionItem : element.name)
+        //                cell.bind(mySectionItem : element.name)
         //            })
         //            .disposed(by: disposeBag)
         
@@ -346,10 +329,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         if(getIndex + 1 < viewModel?.output.daySchedules.value.count ?? 0){
             getIndex += 1
         }
-        
-        
-        
-        //        daysHeaderCollectionView.selectItem(at: IndexPath(item: getIndex, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+    
     }
     
     
@@ -362,11 +342,7 @@ extension MainPageViewController : UICollectionViewDelegate , UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == calendarCollectionView){
             return  CGSize(width: calenderCellWidth , height: calenderCellHeight)
-        }
-        //        else if(collectionView == daysHeaderCollectionView){
-        //            return CGSize(width: 80 , height: 30)
-        //        }
-        else{
+        }else{
             return CGSize(width: UIScreen.main.bounds.width , height: 30)
         }
     }
@@ -383,7 +359,6 @@ extension MainPageViewController : UIScrollViewDelegate {
             //+ 50 스크롤뷰를 사용하면 기본값이 + 50이 있는데 해당값
             // -10 은 스크롤뷰와
             let segmentViewOffset = -(scrollView.contentOffset.y + topStackView.frame.height + 50 )
-            //            segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - daysHeaderCollectionView.frame.height - (topStackView.spacing * 2) - toDoTodayLabel.frame.height)), 0)
             segmentTransform = CATransform3DTranslate(segmentTransform, 0, max(segmentViewOffset , -(topStackView.frame.height - topStackbottomStackSpacing - (topStackView.spacing ) - toDoTodayLabel.frame.height)), 0)
             topStackView.layer.transform = segmentTransform
             guard let topSection = tutoringTableView.indexPathsForVisibleRows?.first?[0] else { return }

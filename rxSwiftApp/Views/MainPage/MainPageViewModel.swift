@@ -16,7 +16,7 @@ class MainPageViewModel : ViewModelProtocol {
     let networkAPI : NetworkingService = NetworkingAPI.shared
     
     weak var coordinator : MainPageViewCoordinator?
-
+    
     private let disposeBag = DisposeBag()
     
     struct Input {
@@ -43,9 +43,9 @@ class MainPageViewModel : ViewModelProtocol {
     
     
     lazy var dateFormatter = DateFormatter().then {
-    
+        
         $0.dateFormat = "yyyy년 M월"
-    
+        
     }
     
     lazy var components : DateComponents = {
@@ -56,10 +56,10 @@ class MainPageViewModel : ViewModelProtocol {
         return dateComponets
     }()
     
-
-  
     
-   
+    
+    
+    
     
     
     
@@ -70,12 +70,11 @@ class MainPageViewModel : ViewModelProtocol {
     
     
     func bindInput() {
-     
+        
         
         input.month
             .bind(onNext: { [weak self] in  self?.calculation(components: $0 ) })
             .disposed(by: disposeBag)
-      
         input.monthController
             .subscribe(onNext: { [weak self] controlInt in
                 guard let self = self else { return }
@@ -83,25 +82,18 @@ class MainPageViewModel : ViewModelProtocol {
                 month.month! += controlInt
                 self.input.month.accept(month)
             })
-           .disposed(by: disposeBag)
-
+            .disposed(by: disposeBag)
         input.month.accept(components)
-        
-        
         input.menuOpen
             .subscribe { [weak self] _ in
                 self?.coordinator?.sideMenuOpen()
             }.disposed(by: disposeBag)
-
         
-      
     }
     
     func bindOutput() {
         
-//
-//
-//        calculation()
+    
     }
     
     
@@ -120,12 +112,13 @@ class MainPageViewModel : ViewModelProtocol {
         daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
         
         weekdayAdding = 2 - firstWeekday
-        // 이 과정을 해주는 이유는 예를 들어 2020년 4월이라 하면 4월 1일은 수요일 즉, 수요일이 달의 첫날이 됩니다.  수요일은 component의 4 이므로 CollectionView에서 앞의 3일은 비울 필요가 있으므로 인덱스가 1일부터 시작할 수 있도록 해줍니다. 그래서 2 - 4 해서 -2부터 시작하게 되어  정확히 3일 후부터 1일이 시작하게 됩니다.
+        // 이 과정을 해주는 이유는 예를 들어 2020년 4월이라 하면 4월 1일은 수요일 즉, 수요일이 달의 첫날이 됩니다.
+        //수요일은 component의 4 이므로 CollectionView에서 앞의 3일은 비울 필요가 있으므로 인덱스가 1일부터 시작할 수 있도록 해줍니다.
+        //그래서 2 - 4 해서 -2부터 시작하게 되어  정확히 3일 후부터 1일이 시작하게 됩니다.
         output.MonthText.accept(dateFormatter.string(from: firstDayOfMonth!))
         
         var tempDays : [String] = []
         for day in weekdayAdding...daysCountInMonth {
-    
             if day < 1 { // 1보다 작을 경우는 비워줘야 하기 때문에 빈 값을 넣어준다.
                 tempDays.append("")
             } else {
@@ -134,10 +127,7 @@ class MainPageViewModel : ViewModelProtocol {
         }
         
         output.weekDays.accept([DaysModel(name: "요일", items: ["일", "월", "화", "수", "목", "금", "토"]),
-                                 DaysModel(name: "날짜", items: tempDays)])
-//        ([DaysModel(name: "요일", items: ["일", "월", "화", "수", "목", "금", "토"]),
-//                                 DaysModel(name: "날짜", items: tempDays)])
-        
+                                DaysModel(name: "날짜", items: tempDays)])
         
     }
     

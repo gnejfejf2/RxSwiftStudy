@@ -21,6 +21,8 @@ class AppMainCoordinator : AppMainCooridnatorProtocol {
     
     weak var finishCoordinator : CoordinatorFinishDelegate?
     
+    var tabBarCoordinator : TabBarMasterCoordinator?
+    
     required init(_ navigationController: UINavigationController) {
         self.appMainRouter = Router(navigationController: navigationController , navigationBarHidden : true)
 //        finishCoordinator = self
@@ -35,6 +37,7 @@ class AppMainCoordinator : AppMainCooridnatorProtocol {
     func tabBarStart() {
         
         let tabBarCoordinator = TabBarMasterCoordinator(self)
+        self.tabBarCoordinator = tabBarCoordinator
         childCoordinators.append(tabBarCoordinator)
         tabBarCoordinator.start()
     }

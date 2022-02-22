@@ -13,16 +13,35 @@ import RxSwift
 class rxUnitTest: XCTestCase {
     let disposeBag = DisposeBag()
     
-    var viewModel: MainPageViewModel!
+    var view : MainPageViewController!
+
     var scheduler: TestScheduler!
     // MARK: - GIVEN
 
+    var appMainCoordinator : AppMainCoordinator!
+    
     override func setUp() {
+        //앱시작
+        appMainCoordinator = AppMainCoordinator(UINavigationController())
+        //탭바 시작
+        appMainCoordinator.tabBarStart()
+        //Mock서버셋팅
         let mockNetworkingAPI =  NetworkingAPI(provider: MoyaProvider<NetworkAPI>(stubClosure: { _ in .immediate }))
-        viewModel = MainPageViewModel(networkAPI: mockNetworkingAPI)
+        //View생성
+        view = MainPageViewController()
+        //ViewModel 생성
+        let viewModel = MainPageViewModel(networkAPI: mockNetworkingAPI)
+        //코디네이터 생성
+        let coordinator = MainPageViewCoordinator(appMainCoordinator.tabBarCoordinator!, .first)
+        
+        viewModel.coordinator = coordinator
+        view.viewModel = viewModel
         scheduler = TestScheduler(initialClock: 0 , resolution:  0.01)
     }
 
+    
+    
+    
       
     
     
@@ -43,10 +62,9 @@ class rxUnitTest: XCTestCase {
         
         
         
-        viewModel.output.weekDays
+        view.viewModel?.output.weekDays
             .map{
-                print($0.first?.name)
-                return $0.first?.name ?? ""
+               $0.first?.name
             }
             .bind(to: observer)
             .disposed(by: disposeBag)

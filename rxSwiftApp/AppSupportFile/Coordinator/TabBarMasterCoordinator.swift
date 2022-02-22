@@ -19,9 +19,9 @@ class TabBarMasterCoordinator: NSObject, Coordinator , TabBarMasterProtocol {
     
 
     required init(_ appMainCoordinator : AppMainCoordinator){
-
+    
         self.appMainCoordinator = appMainCoordinator
-
+    
     }
     
     func start() {

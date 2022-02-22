@@ -24,7 +24,6 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .vertical
-//        layout.itemSize = CGSize(width: 120, height: 40)
         let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: layout)
         collectionView.indicatorStyle = .white
         collectionView.translatesAutoresizingMaskIntoConstraints = false
