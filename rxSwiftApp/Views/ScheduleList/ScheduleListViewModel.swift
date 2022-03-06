@@ -21,26 +21,20 @@ class ScheduleListViewModel : ViewModelProtocol {
       
     }
     
-    let input = Input()
-    let output = Output()
+  
     
-
+    let networkAPI : NetworkingAPI
     let coordinator : ScheduleListViewCoordinator
+    let disposeBag = DisposeBag()
     
-    var network = NetworkingAPI.shared
-
-    private let disposeBag = DisposeBag()
-    
-    init(coordinator : ScheduleListViewCoordinator){
+    required init(networkAPI : NetworkingAPI = NetworkingAPI.shared , coordinator : ScheduleListViewCoordinator){
+        self.networkAPI = networkAPI
         self.coordinator = coordinator
     }
     
-    
-    func bindInput() {
-  
-    }
-    
-    func bindOutput() {
+    func transform(input: Input) -> Output {
         
+        return Output()
     }
 }
+

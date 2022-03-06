@@ -31,10 +31,9 @@ class MainPageViewCoordinator : TabViewCoordinator , FirstTabProtocol {
     }
     
     func start() {
-        let view = MainPageViewController()
-        let viewModel = MainPageViewModel()
-        viewModel.coordinator = self
-        view.viewModel = viewModel
+     
+        let viewModel = MainPageViewModel(coordinator: self)
+        let view = MainPageViewController(viewModel: viewModel)
         navigatonController.pushViewController(view, animated: true)
     }
     

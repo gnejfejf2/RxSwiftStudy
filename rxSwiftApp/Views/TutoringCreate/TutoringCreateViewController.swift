@@ -15,7 +15,7 @@ import RxRelay
 import RxGesture
 
 
-class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
+class TutoringCreateViewController: SuperViewControllerSetting<TutoringCreateViewModel> {
     
     lazy var mainScrollView = UIScrollView().then{
         
@@ -174,11 +174,8 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
     
     lazy var bottomConstraint = mainStackView.bottomAnchor.constraint(equalTo: self.mainScrollView.bottomAnchor)
     
-    private let disposeBag = DisposeBag()
-    
-    
-    var viewModel : TutoringCreateViewModel?
-    
+   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         uiDrawing()
@@ -196,7 +193,7 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
         notificationCenterDelete()
     }
     
-    func uiDrawing() {
+    override func uiDrawing() {
         view.backgroundColor = .primaryColorReverse
         
         view.addSubview(mainScrollView)
@@ -248,33 +245,33 @@ class TutoringCreateViewController: UIViewController , ViewSettingProtocol {
        
     }
     
-    func uiSetting() {
+    override func uiSetting() {
         
         navigationBarSetting()
         navigationBarTitleSetting("신규 튜터링")
-        tutoringTextField.doneAction = { [weak self] in
-            self?.tuteeTextField.becomeFirstResponder()
-        }
-        tuteeTextField.doneAction = { [weak self] in
-            self?.paymentMethodTextField.becomeFirstResponder()
-        }
-        paymentMethodTextField.pickerView.delegate = self
-        paymentMethodTextField.doneAction = { [weak self] in
-            guard let self = self else { return }
-            self.viewModel?.output.selectedIndex.accept(self.pickerIndex)
-        }
+//        tutoringTextField.doneAction = { [weak self] in
+//            self?.tuteeTextField.becomeFirstResponder()
+//        }
+//        tuteeTextField.doneAction = { [weak self] in
+//            self?.paymentMethodTextField.becomeFirstResponder()
+//        }
+//        paymentMethodTextField.pickerView.delegate = self
+//        paymentMethodTextField.doneAction = { [weak self] in
+//            guard let self = self else { return }
+//            self.viewModel.output.selectedIndex.accept(self.pickerIndex)
+//        }
     }
     
     func uiBinding() {
        
-        viewModel?.output.selectedIndex
-            .map{ [weak self] in self?.pickerData[$0].name }
-            .bind(to : paymentMethodTextField.rx.text)
-            .disposed(by: disposeBag)
-
-        viewModel?.output.selectedIndex
-            .subscribe(onNext:  { [weak self] in self?.paymentTextFieldSetting($0) } )
-            .disposed(by: disposeBag)
+//        viewModel?.output.selectedIndex
+//            .map{ [weak self] in self?.pickerData[$0].name }
+//            .bind(to : paymentMethodTextField.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        viewModel?.output.selectedIndex
+//            .subscribe(onNext:  { [weak self] in self?.paymentTextFieldSetting($0) } )
+//            .disposed(by: disposeBag)
             
     }
     

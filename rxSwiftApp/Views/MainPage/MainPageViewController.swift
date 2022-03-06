@@ -11,7 +11,7 @@ protocol MainPageProtocol {
     func headerMove(_ index : Int)
 }
 
-class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageProtocol{
+class MainPageViewController: SuperViewControllerSetting<MainPageViewModel>{
     
     
     //
@@ -157,17 +157,13 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     private let topStackbottomStackSpacing : CGFloat = 20
    
     
-    var viewModel : MainPageViewModel?
-    
-    private let disposeBag : DisposeBag = DisposeBag()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         uiDrawing()
         uiSetting()
-        uiBinding()
-        eventBinding()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -175,7 +171,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     
-    func uiDrawing() {
+    override func uiDrawing() {
         view.addSubview(topStackView)
         view.addSubview(topSafeAreaCover)
         
@@ -224,7 +220,7 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     
-    func uiSetting(){
+    override func uiSetting(){
         view.backgroundColor = .primaryColorReverse
         
         calendarCollectionView.rx.setDelegate(self)
@@ -236,75 +232,75 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
     }
     
     func eventBinding() {
-        calendarCollectionView.rx.itemSelected
-            .subscribe { [weak self] indexPath in
-                let coordinator =  DayScheduleViewCoordinator()
-                coordinator.parentCoordinator = self?.viewModel?.coordinator
-                coordinator.start()
-            }
-            .disposed(by: disposeBag)
-
-        menuButton.rx.tap
-            .bind{ [weak self] event in
-                guard let viewModel = self?.viewModel else { return }
-                viewModel.input.menuOpen.accept(event)
-            }
-            .disposed(by: disposeBag)
-
-        nextMonth.rx.tap
-            .bind(onNext: { [weak self] in
-                self?.viewModel?.input.monthController.onNext(1)
-            })
-            .disposed(by: disposeBag)
-        
-        
-        previousMonth.rx.tap
-            .bind(onNext: { [weak self] in
-                self?.viewModel?.input.monthController.onNext(-1)
-            })
-            .disposed(by: disposeBag)
-        
+//        calendarCollectionView.rx.itemSelected
+//            .subscribe { [weak self] indexPath in
+//                let coordinator =  DayScheduleViewCoordinator()
+//                coordinator.parentCoordinator = self?.viewModel?.coordinator
+//                coordinator.start()
+//            }
+//            .disposed(by: disposeBag)
+//
+//        menuButton.rx.tap
+//            .bind{ [weak self] event in
+//                guard let viewModel = self?.viewModel else { return }
+//                viewModel.input.menuOpen.accept(event)
+//            }
+//            .disposed(by: disposeBag)
+//
+//        nextMonth.rx.tap
+//            .bind(onNext: { [weak self] in
+//                self?.viewModel?.input.monthController.onNext(1)
+//            })
+//            .disposed(by: disposeBag)
+//
+//
+//        previousMonth.rx.tap
+//            .bind(onNext: { [weak self] in
+//                self?.viewModel?.input.monthController.onNext(-1)
+//            })
+//            .disposed(by: disposeBag)
+//
     }
     
     func uiBinding(){
-        viewModel?.output.weekDays
-            .bind(to : calendarCollectionView.rx.items(dataSource: calendarDataSource))
-            .disposed(by: disposeBag)
-        
-        
-        viewModel?.output.daySchedules
-            .bind(to: tutoringTableView.rx.items(cellIdentifier: TutoringViewCell.identifier, cellType: TutoringViewCell.self)) {
-                (row, element, cell) in
-                cell.uiSetting(element)
-            }.disposed(by: disposeBag)
-        
-        //        viewModel?.output.daySchedules
-        //            .bind(to: scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){   (row, element, cell) in
-        //
-        //            })
-        //            .disposed(by: disposeBag)
-        
-        //            .bind(to : scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){
-        //                (row, element, cell) in
-        //                cell.bind(mySectionItem : element.name)
-        //            })
-        //            .disposed(by: disposeBag)
-        
-        viewModel?.output.heeaderIndex
-            .distinctUntilChanged()
-            .bind(onNext: { [weak self] in self?.headerMove($0) } )
-            .disposed(by: disposeBag)
-        
-        viewModel?.output.MonthText
-            .asDriver()
-            .drive(calendarHeader.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel?.output.weekDays
-            .bind(onNext: { [weak self] days in
-                self?.calendarSetting(days)
-            })
-            .disposed(by: disposeBag)
+//        viewModel?.output.weekDays
+//            .bind(to : calendarCollectionView.rx.items(dataSource: calendarDataSource))
+//            .disposed(by: disposeBag)
+//
+//
+//        viewModel?.output.daySchedules
+//            .bind(to: tutoringTableView.rx.items(cellIdentifier: TutoringViewCell.identifier, cellType: TutoringViewCell.self)) {
+//                (row, element, cell) in
+//                cell.uiSetting(element)
+//            }.disposed(by: disposeBag)
+//
+//        viewModel?.output.daySchedules
+//            .bind(to: scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){   (row, element, cell) in
+//
+//            })
+//            .disposed(by: disposeBag)
+//
+//            .bind(to : scheduleCollectionView.rx.items(cellIdentifier: DayScheduleViewCell.identifier, cellType: DayScheduleViewCell.self){
+//                (row, element, cell) in
+//                cell.bind(mySectionItem : element.name)
+//            })
+//            .disposed(by: disposeBag)
+//
+//        viewModel?.output.heeaderIndex
+//            .distinctUntilChanged()
+//            .bind(onNext: { [weak self] in self?.headerMove($0) } )
+//            .disposed(by: disposeBag)
+//
+//        viewModel?.output.MonthText
+//            .asDriver()
+//            .drive(calendarHeader.rx.text)
+//            .disposed(by: disposeBag)
+//
+//        viewModel?.output.weekDays
+//            .bind(onNext: { [weak self] days in
+//                self?.calendarSetting(days)
+//            })
+//            .disposed(by: disposeBag)
     }
     
     
@@ -323,15 +319,13 @@ class MainPageViewController: UIViewController , ViewSettingProtocol , MainPageP
         }
     }
     
-    func headerMove(_ index : Int){
-        var getIndex : Int = index
-        
-        if(getIndex + 1 < viewModel?.output.daySchedules.value.count ?? 0){
-            getIndex += 1
-        }
-    
-    }
-    
+//    func headerMove(_ index : Int){
+//        var getIndex : Int = index
+//        if(getIndex + 1 < viewModel?.output.daySchedules.value.count ?? 0){
+//            getIndex += 1
+//        }
+//    }
+//    
     
     
 }
@@ -363,7 +357,7 @@ extension MainPageViewController : UIScrollViewDelegate {
             topStackView.layer.transform = segmentTransform
             guard let topSection = tutoringTableView.indexPathsForVisibleRows?.first?[0] else { return }
             
-            viewModel?.output.heeaderIndex.accept(topSection)
+//            viewModel.output.heeaderIndex.accept(topSection)
             
         }
     }
@@ -371,22 +365,6 @@ extension MainPageViewController : UIScrollViewDelegate {
 
 
 extension MainPageViewController : UITableViewDelegate {
-    
-    
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 60))
-    //        let categoryLabel = UILabel()
-    //        categoryLabel.text = viewModel?.output.daySchedules.value[section].name
-    //        categoryLabel.font = .mainContentsBold
-    //        headerView.addSubview(categoryLabel)
-    //        categoryLabel.snp.makeConstraints { make in
-    //            make.trailing.top.bottom.equalTo(headerView)
-    //            make.leading.equalToSuperview().offset(.titleLeadingSpacing)
-    //        }
-    //        return headerView
-    //    }
-   
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }

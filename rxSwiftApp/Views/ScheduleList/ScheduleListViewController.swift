@@ -8,41 +8,18 @@ import RxRelay
 import RxGesture
 
 
-class ScheduleListViewController: UIViewController , ViewSettingProtocol {
+class ScheduleListViewController : SuperViewControllerSetting<ScheduleListViewModel> {
     
   
-    private let disposeBag = DisposeBag()
-    
-    var viewModel : ScheduleListViewModel?
-   
     override func viewDidLoad() {
         super.viewDidLoad()
-        uiDrawing()
-        uiSetting()
-        uiBinding()
-        eventBinding()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationBarSetting()
     }
     
-    func uiDrawing() {
-        view.backgroundColor = .primaryColorReverse
-     
-    }
-    
-    func uiSetting() {
-        
-    }
-    
-    func uiBinding() {
-        
-    }
-    
-    func eventBinding() {
-        
-    }
-    
+   
 
 }

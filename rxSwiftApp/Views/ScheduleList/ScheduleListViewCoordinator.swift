@@ -13,9 +13,9 @@ class ScheduleListViewCoordinator : Coordinator {
     var childCoordinator: [Coordinator] = []
     
     func start() {
-        let view = ScheduleListViewController()
         let viewModel = ScheduleListViewModel(coordinator: self)
-        view.viewModel = viewModel
+        let view = ScheduleListViewController(viewModel: viewModel)
+       
         parentCoordinator?.tabBaseRouter.push(view, isAnimated: true, onNavigationBack: nil)
     }
     

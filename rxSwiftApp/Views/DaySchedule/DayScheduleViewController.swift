@@ -15,7 +15,7 @@ import RxRelay
 import RxGesture
 
 
-class DayScheduleViewController: UIViewController , ViewSettingProtocol {
+class DayScheduleViewController: SuperViewControllerSetting<DayScheduleViewModel> {
     
   
     
@@ -46,16 +46,7 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         $0.title = "스케줄 추가하기"
     }
     
-    
-
-    private let disposeBag = DisposeBag()
-    
-    var viewModel : DayScheduleViewModel?
-   
-    
-    
-    
-    
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         uiDrawing()
@@ -68,7 +59,7 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         navigationBarSetting()
     }
     
-    func uiDrawing() {
+    override func uiDrawing() {
         view.backgroundColor = .primaryColorReverse
         view.addSubview(daysScheduleCollectionView)
         view.addSubview(emptyView)
@@ -83,7 +74,7 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         }
     }
     
-    func uiSetting() {
+    override func uiSetting() {
 
         
         navigationBarSetting()
@@ -94,23 +85,23 @@ class DayScheduleViewController: UIViewController , ViewSettingProtocol {
         daysScheduleCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        emptyView.delegate = self
+//        emptyView.delegate = self
         
         
     }
     
     func uiBinding() {
         
-        viewModel?.output.daySchedules
-            .map { $0.count > 0 }
-            .bind(to: emptyView.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        viewModel?.output.daySchedules
-            .bind(to: daysScheduleCollectionView.rx.items(cellIdentifier: DayScheduleCollectionViewCell.identifier, cellType: DayScheduleCollectionViewCell.self)) {
-                (row, element, cell) in
-                cell.uiSetting(element.name)
-            }.disposed(by: disposeBag)
+//        viewModel?.output.daySchedules
+//            .map { $0.count > 0 }
+//            .bind(to: emptyView.rx.isHidden)
+//            .disposed(by: disposeBag)
+//
+//        viewModel?.output.daySchedules
+//            .bind(to: daysScheduleCollectionView.rx.items(cellIdentifier: DayScheduleCollectionViewCell.identifier, cellType: DayScheduleCollectionViewCell.self)) {
+//                (row, element, cell) in
+//                cell.uiSetting(element.name)
+//            }.disposed(by: disposeBag)
         
     }
     
@@ -129,8 +120,8 @@ extension DayScheduleViewController : UICollectionViewDelegateFlowLayout {
 }
 
 
-extension DayScheduleViewController : EmptyViewActionProtocol {
-    func protocolAction() {
-        viewModel?.output.daySchedules.accept([DaysModel(name: "1월1일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월2일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월3일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월4일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월5일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월6일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월7일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월8일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월9일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월10일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월11일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월12일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월13일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월14일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])])
-    }
-}
+//extension DayScheduleViewController : EmptyViewActionProtocol {
+//    func protocolAction() {
+//        viewModel?.output.daySchedules.accept([DaysModel(name: "1월1일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월2일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월3일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월4일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월5일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월6일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월7일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월8일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월9일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월10일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월11일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월12일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월13일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"]),DaysModel(name: "1월14일", items: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])])
+//    }
+//}

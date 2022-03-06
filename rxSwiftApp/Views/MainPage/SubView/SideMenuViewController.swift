@@ -32,18 +32,8 @@ class CustomSideMenuNavigation : SideMenuNavigationController {
 
 
 
-class SideMenuViewController: UIViewController , ViewSettingProtocol {
+class SideMenuViewController : SuperViewControllerSetting<SideMenuViewModel>  {
     
-    private let disposeBag = DisposeBag()
-    
-    var viewModel : SideMenuViewModel?
-   
-    
-    
-    
-    
-
-
     lazy var userMainStackView = UIStackView().then{
         $0.axis = .horizontal
         $0.distribution = .fill
@@ -102,8 +92,7 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        uiDrawing()
-        uiSetting()
+      
         uiBinding()
         eventBinding()
     }
@@ -113,7 +102,7 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
     }
     
     
-    func uiDrawing() {
+    override func uiDrawing() {
         view.addSubview(userMainStackView)
         view.addSubview(buttonScrollView)
         
@@ -145,7 +134,7 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
         
     }
     
-    func uiSetting() {
+    override func uiSetting() {
         view.backgroundColor = .primaryColorReverse
         
     }
@@ -155,13 +144,13 @@ class SideMenuViewController: UIViewController , ViewSettingProtocol {
     }
     
     func eventBinding() {
-        informationButton.rx.tapGesture()
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] event in
-                
-                self?.viewModel?.input.tutoringCreateOpen.accept(event)
-            })
-            .disposed(by: disposeBag)
+//        informationButton.rx.tapGesture()
+//            .when(.recognized)
+//            .subscribe(onNext: { [weak self] event in
+//                
+//                self?.viewModel?.input.tutoringCreateOpen.accept(event)
+//            })
+//            .disposed(by: disposeBag)
     }
 
 }

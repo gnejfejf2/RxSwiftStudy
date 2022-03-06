@@ -13,9 +13,10 @@ class TutoringCreateViewCoordinator : Coordinator {
     var childCoordinator: [Coordinator] = []
     
     func start() {
-        let view = TutoringCreateViewController()
+        
         let viewModel = TutoringCreateViewModel(coordinator: self)
-        view.viewModel = viewModel
+        let view = TutoringCreateViewController(viewModel: viewModel)
+     
         parentCoordinator?.tabBaseRouter.push(view, isAnimated: true, onNavigationBack: nil)
     }
 }

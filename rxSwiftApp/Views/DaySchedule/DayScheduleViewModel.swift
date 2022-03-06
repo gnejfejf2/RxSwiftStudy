@@ -15,9 +15,14 @@ import RxDataSources
 class DayScheduleViewModel : ViewModelProtocol {
 
     
+
+    struct Input {
+        
+    }
+    
     struct Output {
       
-        let daySchedules = BehaviorRelay<[DaysModel]>(value: [])
+//        let daySchedules = BehaviorRelay<[DaysModel]>(value: [])
     }
     
     let output = Output()
@@ -25,22 +30,18 @@ class DayScheduleViewModel : ViewModelProtocol {
 
     let coordinator : DayScheduleViewCoordinator
     
-    var network = NetworkingAPI.shared
+    let networkAPI : NetworkingAPI
 
-    private let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
-    init(coordinator : DayScheduleViewCoordinator){
+    required init(networkAPI : NetworkingAPI = NetworkingAPI.shared , coordinator : DayScheduleViewCoordinator){
+        self.networkAPI = networkAPI
         self.coordinator = coordinator
     }
     
     
-    func bindInput() {
+    func transform(input: Input) -> Output {
+        return Output()
+    }
   
-        
-        
-    }
-    
-    func bindOutput() {
-        
-    }
 }
