@@ -16,18 +16,7 @@ class MainPageViewModel : ViewModelProtocol {
     
   
     
-    struct Input {
-//        let menuOpen = PublishRelay<Void>()
-//        let monthController = PublishSubject<Int>()
-//        let month = BehaviorRelay<DateComponents>(value: DateComponents())
-    }
-    
-    struct Output {
-//        let heeaderIndex = PublishRelay<Int>()
-//        let weekDays = BehaviorRelay<[DaysModel]>(value: [])
-//        let MonthText = BehaviorRelay<String>(value: "")
-//        let daySchedules = BehaviorRelay<[String]>(value: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])
-    }
+   
 
     
     let cal = Calendar.current
@@ -50,6 +39,22 @@ class MainPageViewModel : ViewModelProtocol {
         return dateComponets
     }()
     
+    struct Input {
+        let menuOpen : Driver<Void>
+        let previousMonthTap : Driver<Int>
+        let nextMonthTap : Driver<Int>
+//        let monthController = PublishSubject<Int>()
+//        let month = BehaviorRelay<DateComponents>(value: DateComponents())
+    }
+    
+    struct Output {
+        let monthText : Driver<String>
+        let weekDays : Driver<[DaysModel]>
+//        let heeaderIndex = PublishRelay<Int>()
+//        let weekDays = BehaviorRelay<[DaysModel]>(value: [])
+//        let MonthText = BehaviorRelay<String>(value: "")
+//        let daySchedules = BehaviorRelay<[String]>(value: ["숨쉬기","가만히있기","숨우우우움","테스트","rkdwl"])
+    }
     
     
     
@@ -68,8 +73,46 @@ class MainPageViewModel : ViewModelProtocol {
     }
     
     func transform(input: Input) -> Output {
+        let monthText = PublishSubject<String>()
+        let weekDays = PublishSubject<[DaysModel]>()
+        let month = BehaviorSubject<DateComponents>(value: DateComponents())
         
-        return Output()
+        input.menuOpen
+            .asObservable()
+            .subscribe{ [weak self] _ in
+                guard let self = self else { return }
+                self.coordinator.sideMenuOpen()
+            }
+            .disposed(by: disposeBag)
+        
+        input.nextMonthTap
+            .asObservable()
+            .subscribe{ [weak self] _ in
+                guard let self = self else { return }
+                print("실행?")
+            }
+            .disposed(by: disposeBag)
+        
+        Observable
+            .of(input.nextMonthTap , input.previousMonthTap)
+            .merge()
+            .asObservable()
+            .subscribe{ [weak self] item in
+                guard let self = self else { return }
+                print(item)
+                print("실행2?")
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+//        let
+        
+        
+        return .init(
+            monthText: monthText.asDriverOnErrorNever() ,
+            weekDays: weekDays.asDriverOnErrorNever()
+        )
     }
     
     func bindInput() {

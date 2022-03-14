@@ -17,7 +17,6 @@ protocol ViewModelProtocol {
     var coordinator : U { get }
     
     func transform(input: Input) -> Output
-    func settingLoading<T>(loading : PublishSubject<Bool> , on : Bool ,  _ item : T) -> T
     
     init(networkAPI : NetworkingAPI , coordinator : U)
     
@@ -25,12 +24,6 @@ protocol ViewModelProtocol {
 }
 
 
-extension ViewModelProtocol {
-    func settingLoading<T>(loading : PublishSubject<Bool> , on : Bool ,  _ item : T) -> T {
-        loading.onNext(on)
-        return item
-    }
-}
 
 
 

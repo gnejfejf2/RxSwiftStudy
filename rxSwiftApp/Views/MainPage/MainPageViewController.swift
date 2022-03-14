@@ -161,11 +161,8 @@ class MainPageViewController: SuperViewControllerSetting<MainPageViewModel>{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        uiDrawing()
-        uiSetting()
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationBarSetting(hidden: true)
     }
@@ -223,13 +220,30 @@ class MainPageViewController: SuperViewControllerSetting<MainPageViewModel>{
     override func uiSetting(){
         view.backgroundColor = .primaryColorReverse
         
-        calendarCollectionView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
-        
-        tutoringTableView.rx.setDelegate(self)
-            .disposed(by: disposeBag)
+//        calendarCollectionView.rx.setDelegate(self)
+//            .disposed(by: disposeBag)
+//        
+//        tutoringTableView.rx.setDelegate(self)
+//            .disposed(by: disposeBag)
         
     }
+    
+    override func viewModelBinding() {
+        
+        let menuButtonTap = menuButton.rx.tap
+        let previousMonthTap = previousMonth.rx.tap.map{ _ -> Int in
+            print("실행?")
+            return -1 }
+        let nextMonthTap = nextMonth.rx.tap.map{ _ in return 1 }
+        
+        let output = viewModel.transform(input: .init(
+            menuOpen : menuButtonTap.asDriverOnErrorNever() ,
+            previousMonthTap : previousMonthTap.asDriverOnErrorNever() ,
+            nextMonthTap : nextMonthTap.asDriverOnErrorNever()
+        ))
+        
+    }
+    
     
     func eventBinding() {
 //        calendarCollectionView.rx.itemSelected
